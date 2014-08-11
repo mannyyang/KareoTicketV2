@@ -1,0 +1,51 @@
+table.bordered.fancy.zebra.left(width="100%")
+    thead
+        tr
+            td= "Priority"
+            td= "Title"
+            td= "Project Owner"
+            td= "Deadline"
+            td= "Status"
+    tbody
+        each val in allItems
+            tr
+                - var priority = ""
+                - var title = ""
+                - var owner = ""
+                - var deadline = ""
+                - var status = ""
+
+                each field in val.fields
+                    if field.label == "Priority"
+                        - priority = field.values[0].value.text
+                    if field.label == "Project name"
+                        - title = field.values[0].value
+                    if field.label == "Project owner"
+                        each ownerName in field.values
+                            - owner = owner + ', ' + ownerName.value.name
+                    if field.label == "Deadline"
+                        - deadline = field.values[0].start_date
+                    if field.label == "Status"
+                        - status = field.values[0].value.text
+
+                td(class="priority")
+                    if status == "Ongoing"
+                        div(class="notapplicable")
+                    else
+                        div(class=priority)= priority
+                td(class="title")
+                    span: b= title
+                td(class="owner")
+                    div= owner.substring(1, owner.length)
+                td(class="deadline")
+                    div= moment(deadline, 'YYYY-MM-DD').endOf('day').fromNow()
+                td(class="status")
+                    span(class="text-has-icon #{status.replace(/ /g,'').toLowerCase()}")= status
+                        if status == "Ongoing"
+                            i.ki.history
+                        if status == "Submitted"
+                            i.ki.attention
+                        if status == "In progress"
+                            i.ki.play
+                        if status == "Complete"
+                            i.ki.check

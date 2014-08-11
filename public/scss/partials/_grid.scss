@@ -1,0 +1,99 @@
+/*************************************************
+	Grid
+**************************************************/
+
+$fg-column: 60px;
+$fg-gutter:25px;
+$fg-max-columns: 12;
+
+html, body {
+	height: 100%;
+}
+
+/* Define grid-1 through grid-11 */
+
+@for $i from 1 through 11 {
+	.grid-#{$i} {
+		display: block;
+		float: left;
+		width: flex-grid($i);
+		margin-right: flex-gutter();
+		position: relative;
+		min-height: 1px;
+	}
+}
+
+/* Define grid-12. Use grid-12 as a 'row' class as well so you don't have to use the 'last' class. */
+
+.grid-12 {
+	width:100%;
+	display: block;
+	float: left;
+	position: relative;
+	min-height: 1px;
+	[class^='grid-'] {
+		&:last-of-type {
+			margin-right: 0;
+		}
+	}
+}
+
+/* Offset your grid with margins */
+
+@for $i from 1 through 11 {
+	.offset-left-#{$i} {
+		margin-left: flex-grid($i) + flex-gutter();
+	}
+}
+
+@for $i from 1 through 11 {
+	.offset-right-#{$i} {
+		margin-right: flex-grid($i) + flex-gutter();
+	}
+}
+
+html, body {
+	overflow-x: hidden; // prevent scrollbars on off-canvas navs
+
+}
+
+/* Chops. Chop off the margin on a set of grid elements */
+
+@for $i from 1 through 11 {
+	.chop-#{$i} {
+		&:nth-child(#{$i}n + #{$i}) {
+			margin:0;
+		}
+	}
+}
+
+
+.container {
+	max-width: 1080px;
+	margin:0 auto;
+	padding:0 1em;
+	@include clearfix;
+	position: relative;
+	&.xsmall {
+		max-width: 400px;
+	}
+	&.small {
+		max-width: 680px;
+	}
+	&.full {
+		max-width: 100%;
+		padding:0 2em;
+	}
+}
+
+* {
+	@include box-sizing(border-box);
+}
+
+.skinny {
+	padding:0 !important;
+}
+
+.sticky {
+	position: fixed;
+}

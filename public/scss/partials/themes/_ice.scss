@@ -1,0 +1,179 @@
+/*******************************************************
+	Ice Theme
+*******************************************************/
+
+// Apply to body tag
+
+.ice {
+    .main-header {
+        @include candy($primary-color);
+        .title {
+            @include position(relative, 13px 0 0 15px);
+            color: white;
+            text-shadow: 0 -1px 0 shade($primary-color, 60%);
+        }
+        .dropdown {
+            .button {
+                color: white;
+                text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.6);
+                &:before {
+                    font-family: "Pictos Custom";
+                    content: "T";
+                    @extend .large-text;
+                    @include position(relative, 2px 0 0 -6px);
+                }
+                &:after {
+                    content: "";
+                    @include triangle(10px, white, down);
+                    @include position(relative, 0.85em 0 0 0.25em);
+                }
+            }
+        }
+    }
+    .main-nav {
+        @include linear-gradient(shade($primary-color, 30%), shade($primary-color, 45%));
+        .buttonlink {
+            color: white;
+            text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.8);
+        }
+        .dropdown {
+            .buttonlink {
+                &:after {
+                    @include triangle(10px, white, down);
+                    content: "";
+                }
+            }
+        }
+        .input-group {
+            input {
+                background: tint($primary-color, 10%);
+                color: white;
+                border: 0;
+                box-shadow: 0 0 0 transparent;
+                &:focus {
+                    //box-shadow: 0 1px 8px rgba(0,0,0,0.2);
+                    @include placeholder {
+                        color: white;
+                    }
+                }
+                @include placeholder {
+                    color: tint($primary-color, 55%);
+                }
+            }
+            .button {
+                background: tint($primary-color, 10%) !important;
+                color: #fff;
+                border: none;
+                box-shadow: none;
+                padding-top: 3px;
+                padding-bottom: 3px;
+            }
+        }
+        .main-nav-list {}
+    }
+    .local-nav {
+        background: white;
+        ul {
+            li {
+                width: 25%;
+                float: left;
+                a {
+                    color: tint($gray, 50%);
+                    &:hover {
+                        color: $primary-color;
+                        text-shadow: 0 1px 0 transparent;
+                    }
+                    &.selected {
+                        font-weight: bold;
+                        color: $primary-color;
+                        border-bottom: 3px solid $primary-color;
+                    }
+                }
+            }
+        }
+    }
+    &.skinny {
+        .main-nav {
+            padding: 0.25em 2em;
+            .nav-item {
+                vertical-align: middle;
+                padding-right: 1em;
+                &:last-of-type {
+                    padding-right: 0;
+                }
+            }
+            .practice-name {
+                white-space: nowrap;
+                color: white;
+                font-weight: 600;
+            }
+            .logo {
+                position: relative;
+                top: -2px;
+                width: 85px;
+            }
+            .title {
+                display: none;
+            }
+            .dropdown {
+                position: relative;
+                top: 0;
+                right: 0;
+            }
+        }
+        .rail-nav {
+            width: 4em;
+            position: absolute;
+            top: 63px;
+            left: 0;
+            z-index: 199;
+            background: white;
+            border-right: 1px solid tint($gray, 80%);
+            border-bottom: 1px solid tint($gray, 80%);
+            border-top: 0;
+            border-left: 0;
+            @include transition(width 0.4s $ease-out-expo);
+            ul {
+                padding: 0;
+                margin: 0;
+                li {
+                    a {
+                        display: block;
+                        padding: 1em;
+                        text-decoration: none;
+                        //@include transition(all 0.2s ease-in-out);
+                        .name {
+                            display: inline-block;
+                            position: relative;
+                            top: 0px;
+                            left: 10px;
+                            @include transform(scale(0));
+                            @include transition(all 0.2s ease-in-out);
+                            &.up {
+                                @include transform(scale(1));
+                            }
+                            &.hide {
+                                //display: none;
+                           
+                            }
+                        }
+                        i:before {
+                            font-size: 2em;
+                            position: relative;
+                            top: 5px;
+                        }
+                        &:hover {
+                            background: tint($primary-color, 80%);
+                        }
+                    }
+                }
+            }
+            &.open {
+                width: 12em;
+            }
+        }
+        .rail-nav + .main-content {
+            padding-left: 5em;
+        }
+    }
+}

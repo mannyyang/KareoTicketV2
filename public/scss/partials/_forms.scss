@@ -1,0 +1,690 @@
+/*************************************************
+	Forms
+**************************************************/
+
+form {
+	margin:0;
+	padding:0;
+
+	.bar {
+	    height: 18px;
+	    background: green;
+	}
+}
+
+fieldset {
+	margin:0;
+	padding:0;
+	border:0;
+}
+
+.input-group {
+	@include clearfix;
+	margin-bottom: 1em;
+	position: relative;
+	label {
+		display: block;
+		margin-bottom: 5px;
+	}
+	&.phrase {
+		label {
+			display: inline-block;
+			margin:0 5px;
+		}
+	}
+	&.inline {
+		width:100%;
+		&.full {
+			width:100%;
+		}
+		&.small {
+			.input-group-item {
+				.input-group-item-cell {
+					&:first-of-type {
+						width:8em;
+					}
+				}
+			}
+		}
+		.input-group-item {
+			width:100%;
+			float:left;
+			margin-bottom:0.5em;
+			.input-group-item-cell {
+				padding:5px;
+				label {
+					margin:0;
+				}
+				&:first-of-type {
+					width:12em;
+					float:left;
+				}
+				&:last-of-type {
+					overflow:hidden;
+
+				}
+			}
+			.checkbox {
+				label {
+					margin-left:1.5em;
+				}
+			}
+			&:last-of-type {
+				margin-bottom: 0;
+			}
+			&.error {
+				label {
+					color:$error-color;
+				}
+				#{$all-text-inputs} {
+					border-color:$error-color;
+					box-shadow:0 0 8px tint($error-color, 50%);
+				}
+				select {
+					border-color:$error-color;
+				}
+				.error-message {
+					margin:5px 0 0 0;
+					color:$error-color;
+					font-size:0.85em;
+				}
+
+			}
+
+			&.success {
+				label {
+					color:shade($success-color, 15%);
+				}
+				#{$all-text-inputs} {
+					border-color:$success-color;
+					box-shadow:0 0 8px tint($success-color, 50%);
+				}
+				.success-message {
+					margin:5px 0 0 0;
+					color:$success-color;
+					font-size:0.85em;
+				}
+			}
+
+			&.warning {
+				label {
+					color:shade($warning-color, 15%);
+				}
+				#{$all-text-inputs} {
+					border-color:$warning-color;
+					box-shadow:0 0 8px tint($warning-color, 50%);
+				}
+				.warning-message {
+					margin:5px 0 0 0;
+					color:shade($warning-color, 15%);
+					font-size:0.85em;
+				}
+			}
+
+		}
+	}
+	&.error {
+		label {
+			color:$error-color;
+		}
+		#{$all-text-inputs} {
+			border-color:$error-color;
+			box-shadow:0 0 8px tint($error-color, 50%);
+		}
+		select {
+			border-color:$error-color;
+			box-shadow:0 0 8px tint($error-color, 50%);
+		}
+		.error-message {
+			margin:5px 0 0 0;
+			color:$error-color;
+			font-size:0.85em;
+		}
+	}
+	&.success {
+		label {
+			color:shade($success-color, 15%);
+		}
+		#{$all-text-inputs} {
+			border-color:$success-color;
+			box-shadow:0 0 8px tint($success-color, 50%);
+		}
+		select {
+			border-color:$success-color;
+			box-shadow:0 0 8px tint($success-color, 50%);
+		}
+		.error-message {
+			margin:5px 0 0 0;
+			color:$success-color;
+			font-size:0.85em;
+		}
+	}
+	&.warning {
+		label {
+			color:shade($warning-color, 15%);
+		}
+		#{$all-text-inputs} {
+			border-color:$warning-color;
+			box-shadow:0 0 8px tint($warning-color, 50%);
+		}
+		select {
+			border-color:$warning-color;
+			box-shadow:0 0 8px tint($warning-color, 50%);
+		}
+		.warning-message {
+			margin:5px 0 0 0;
+			color:shade($warning-color, 15%);
+			font-size:0.85em;
+		}
+	}
+	&.input-append {
+		position: relative;
+		display: table;
+		border-collapse: separate;
+		.input-append-btn {
+			position: relative;
+			white-space: nowrap;
+			width: 1%;
+			display: table-cell;
+			vertical-align: bottom;
+			.button {
+				border-left: 0;
+				border-radius: 0 3px 3px 0;
+				padding: 5px 15px;
+				display: table-cell;
+			}
+		}
+		#{$all-text-inputs} {
+			display: table-cell;
+			border-radius: 3px 0 0 3px;
+		}
+	}
+	&.has-icons {
+		#{$all-text-inputs} {
+			padding-right:2em;
+		}
+		i:before {
+			position:absolute;
+			right:1em;
+			top:3.5em;
+			@extend .small-text;
+		}
+	}
+}
+
+.input-group-popup {
+	position: absolute;
+	width:100%;
+	background: #fff;
+	border: 1px solid tint($gray, 70%);
+	bottom: 3em;
+	box-shadow: 0 1px 6px rgba(0,0,0,0.15);
+	padding: 10px;
+	border-radius: 3px;
+}
+.input-group-popup:after, .input-group-popup:before {
+	top: 100%;
+	left: 50%;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+}
+
+.input-group-popup:after {
+	border-color: rgba(255, 255, 255, 0);
+	border-top-color: #fff;
+	border-width: 10px;
+	margin-left: -10px;
+}
+.input-group-popup:before {
+	border-color: rgba(221, 221, 221, 0);
+	border-top-color: tint($gray, 70%);
+	border-width: 11px;
+	margin-left: -11px;
+}
+
+#{$all-text-inputs}, select {
+	 width:100%;
+	 border:1px solid tint($gray,80%);
+	 outline:0;
+	 padding:5px 7px;
+	 border-radius: 3px;
+	 box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+	 font-family: $maintypeface;
+	 @include transition (border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out);
+	 &.long {
+		 max-width: 30em;
+	 }
+
+	 &.medium {
+		 max-width: 20em;
+	 }
+
+	 &.small {
+		 max-width: 10em;
+	 }
+	 &.phone-num {
+	 	max-width:7.75em;	// This width nicely fits phone numbers formatted (999) 999-9999
+	 }
+
+	 &.dob {
+	 	max-width:6.75em; // This width nicely fits dates of birth (mm/dd/yyyy)
+	 }
+
+	 &.xsmall {
+		 max-width: 6em;
+	 }
+	 &.xxsmall {
+		max-width: 3.25em;
+	}
+	 &:disabled {
+		 cursor: no-drop;
+		 background: whitesmoke;
+	 }
+}
+
+#{$all-text-inputs-hover} { // Target the :hover pseudo-class
+
+}
+
+#{$all-text-inputs-focus} { // Target the :focus pseudo-class
+	border-color:$primary-color;
+	box-shadow: 0 0px 8px tint($primary-color,60%);
+}
+
+select:active {
+	border-color:$primary-color;
+}
+
+select:focus {
+	border-color:$primary-color;
+}
+
+
+textarea {
+	width:100%;
+	 border:1px solid tint($gray,80%);
+	 outline:0;
+	 padding:5px 7px;
+	 border-radius: 3px;
+	 box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+	 font-family: $maintypeface;
+	 @include transition (border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out);
+	 min-height: 5em;
+	 &.long {
+		 max-width: 30em;
+
+	 }
+
+	 &.medium {
+		 max-width: 20em;
+	 }
+
+	 &.small {
+		 max-width: 10em;
+	 }
+
+	 &.xsmall {
+		 max-width: 6em;
+	 }
+	 &.resize-v {
+	 	resize: vertical;
+	 }
+	 &.xxsmall {
+		max-width: 3.25em;
+	}
+	 &:disabled {
+		 cursor: no-drop;
+		 background: whitesmoke;
+	 }
+	 &:active, &:focus {
+		border-color:$primary-color;
+		box-shadow: 0 0px 8px tint($primary-color,60%);
+	}
+}
+
+select {
+	width: 100%;
+	padding: 0;
+	&.fancy-select {
+		@include button(tint($gray,90%));
+		@include background-image(url("{$_imgPath}dropdown.svg"), linear-gradient(tint($gray,90%), tint($gray,80%)));
+
+		border-radius: 3px;
+		-webkit-border-radius: 3px;
+
+		width:100%;
+		padding: 3px 24px 3px 7px;
+		background-position: calc(100% - 8px) 50%, center;
+		background-repeat: no-repeat, repeat-x;
+		background-size: 8px, auto;
+		text-align: left;
+		font-weight: 400;
+
+		// reset appearance to none
+		-moz-appearance: button;
+		-webkit-appearance: button;
+
+		// webkit hide dropdown hack
+	    text-indent: 0.01px;
+	    text-overflow: '';
+
+	    option {
+	    	text-shadow: none;
+	    }
+
+		&:hover:not(:disabled), &:active{
+			@include background-image(url("{$_imgPath}dropdown.svg"), linear-gradient(tint($gray,85%), tint($gray,75%)));
+			background-position: calc(100% - 8px) 50%, center;
+			background-repeat: no-repeat, repeat-x;
+		}
+		&:active, &:focus {
+			border-color:$primary-color;
+			box-shadow: 0 0px 8px tint($primary-color,60%);
+		}
+		&.tertiary {
+			@include background(url("{$_imgPath}dropdown.svg"));
+			//@include background-image(url("{$_imgPath}dropdown.svg"));
+			background-position: calc(100% - 8px) 50%;
+			background-repeat: no-repeat;
+			border: 1px solid tint($gray, 85%);
+			&:hover:not(:disabled), &:active {
+				border: 1px solid tint($gray, 80%);
+				@include background(url("{$_imgPath}dropdown.svg"));
+				background-position: calc(100% - 8px) 50%;
+				background-repeat: no-repeat;
+			}
+		}
+	}
+
+	&.long {
+		max-width: 30em;
+	}
+	&.medium {
+		max-width: 20em;
+	}
+	&.small {
+		max-width: 10em;
+	}
+	&.xsmall {
+		max-width: 5em;
+	}
+	&.xxsmall {
+		max-width: 3.25em;
+	}
+	&.tall {
+		height:32px; //makes the select the same height as inputs. Nice if you have them next to each other.
+	}
+	&.time {
+		max-width: 5.75em;
+	}
+
+}
+
+.checkbox {
+	margin-bottom: 0.5em;
+	position: relative;
+	input[type="checkbox"], input[type="radio"] {
+		position: absolute;
+		top:5px;
+	}
+	label {
+		margin-left: 1.5em;
+		display: block;
+		&.truncate {
+			@include truncate(calc(100% - 1em));
+		}
+		&:hover {
+			cursor: pointer;
+		}
+	}
+	&.disabled {
+		label {
+			color:tint($gray, 40%);
+			&:hover {
+				cursor: no-drop;
+			}
+		}
+	}
+	&.toggle {
+		float:left;
+		border-radius:0;
+		&:first-child {
+			label {
+				border-radius:3px 0 0 3px;
+			}
+		}
+		&:last-child {
+			label {
+				border-radius:0 3px 3px 0;
+			}
+		}
+		label {
+			@include k-button($steel);
+			margin:0;
+			border-radius:0;
+			margin-left: -1px;
+		}
+		input[type="checkbox"], input[type="radio"] {
+			display: none;
+			&:checked {
+				& + label {
+					box-shadow:inset 0 1px 2px rgba(0,0,0,0.2);
+					background:tint($steel, 20%);
+					&:before {
+						content:"C";
+						font-family: "KareoIcons";
+						@extend .small-text;
+						margin-right: 5px;
+					}
+				}
+			}
+		}
+	}
+	&.fancy {
+		label {
+			@include k-button($steel);
+			color:tint($gray, 20%);
+			margin:0;
+			border-radius:3px;
+			padding:1em 1em 1em 2.5em;
+			h3 {
+				margin:0;
+			}
+			p {
+				margin:0;
+			}
+		}
+		input[type="checkbox"], input[type="radio"] {
+			display: none;
+			&:checked {
+				& + label {
+					@include k-button(tint($primary-color, 15%));
+					margin:0;
+					border-radius:3px;
+					padding:1em 1em 1em 2.5em;
+					color:white;
+					&:before {
+						content:"c";
+						font-family: "KareoIcons";
+						@extend .larger-text;
+						position:absolute;
+						top:0.75em;
+						left:0.5em;
+					}
+				}
+			}
+		}
+	}
+}
+
+.type-ahead-results {
+	border: 1px solid $primary-color;
+	box-shadow: 0 0px 8px tint($primary-color,60%);
+	background-clip: padding-box;
+	background: white;
+	position: absolute;
+	top: 3.65em;
+	width: 100%;
+	z-index: 4000;
+	border-radius: 0 0 3px 3px;
+}
+
+.input-group.inline {
+	.type-ahead-results {
+		border: 1px solid $primary-color;
+		box-shadow: 0 0px 8px tint($primary-color,60%);
+		background-clip: padding-box;
+		background: white;
+		position: absolute;
+		top:1.85em;
+
+		z-index: 3000;
+		border-radius: 0 0 3px 3px;
+	}
+}
+
+// Nice forms, bro. Where do I input my love for you?
+
+
+.lightbox {
+	background: rgba(29,30,37,0.8);
+	position: fixed;
+	overflow:auto;
+	top:0;
+	left:0;
+	width:100%;
+	height: 100%;
+	z-index: -1;
+	display: none;
+	&.iso {
+		padding: 0 1em;
+		background-color: rgba(245, 245, 245, 0.9);
+		overflow-y: inherit;
+		&.open {
+			position: relative;
+			display: block;
+			z-index: 5000;
+
+		}
+		.card {
+			float: none;
+			margin: 0 auto;
+		}
+	}
+	&.open {
+		display: block;
+		z-index: 10000;
+	}
+	&.solid {
+		background: whitesmoke;
+	}
+	&.bright {
+		background: rgba(255,255,255,0.8);
+		.modal {
+			.card {
+				box-shadow: 0 1px 8px rgba(0,0,0,0.2);
+			}
+		}
+	}
+	.container {
+		margin-top: 3em;
+	}
+	.warn{
+	  margin:15em auto;
+	  max-width: 25em;
+	}
+	.modal {
+		margin:3em auto;
+		max-width: 35em;
+		.card {
+			.card-header {
+				.close {
+					position: absolute;
+					right:1em;
+					top:0.6em;
+					border:0;
+					font-size:1.25em;
+					background:transparent;
+					font-weight: bold;
+					color:tint($gray, 60%);
+					text-decoration: none;
+					&:hover {
+						color:$gray;
+						cursor:pointer;
+					}
+				}
+			}
+		}
+	}
+}
+
+// Flash messages
+
+.flash-message {
+	width:100%;
+	float:left;
+	position:relative;
+	padding:1em 1.5em;
+	font-weight:600;
+	.help {
+		@extend .small-text;
+		margin-left:1em;
+	}
+	.close {
+		position:absolute;
+		right:0.5em;
+		top:-0.2em;
+		text-decoration:none;
+		font-size:$base-font-size * 1.5;
+		font-weight:bold;
+		&:hover {
+			cursor:pointer;
+		}
+	}
+	&.success {
+		background:$success-color;
+		color:white;
+		.help {
+			color:shade($success-color, 40%);
+		}
+		.close {
+			color:shade($success-color, 30%);
+			&:hover {
+				color:white;
+			}
+		}
+	}
+	&.error {
+		background:$error-color;
+		color:white;
+		.help {
+			color:shade($error-color, 40%);
+		}
+		.close {
+			color:shade($error-color, 30%);
+			&:hover {
+				color:white;
+			}
+		}
+	}
+	&.warning {
+		background:$warning-color;
+		color:white;
+		.help {
+			color:shade($warning-color, 40%);
+		}
+		.close {
+			color:shade($warning-color, 30%);
+			&:hover {
+				color:white;
+			}
+		}
+	}
+}
+input[type="file"]{
+	margin-bottom: 10px;
+}

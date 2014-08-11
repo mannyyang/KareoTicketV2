@@ -1,0 +1,845 @@
+/*************************************************
+	Buttons
+**************************************************/
+
+@mixin no-clicky {
+  	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+@mixin k-button($color) {
+	@include linear-gradient($color, shade($color, 10%));
+	font-family: $maintypeface;
+	position:relative;
+	display:inline-block;
+	padding:4px 10px;
+	border-radius:3px;
+	border:1px solid shade($color, 20%);
+	box-shadow:inset 0 1px 0 tint($color, 45%);
+	font-size:1em;
+	font-weight:500;
+	cursor:pointer;
+	-webkit-font-smoothing:antialiased;
+	text-decoration:none;
+	&:hover {
+		@include linear-gradient(shade($color,5%), shade($color, 15%));
+	}
+	&:focus {
+		@include linear-gradient(shade($color,5%), shade($color, 15%));
+		outline:0;
+	}
+	&:active {
+		box-shadow:inset 0 1px 6px rgba(0,0,0,0.15);
+		outline:0;
+	}
+}
+
+.button {
+	@include k-button(tint($steel,5%));
+	@include no-clicky;
+	color:$gray;
+	
+	&.primary {
+		@include k-button($primary-color);
+		font-weight: 600;
+		text-shadow: 0 -1px 0 shade($primary-color, 40%);
+		color:white;
+		&:hover {
+			@include linear-gradient(tint($primary-color,15%), tint($primary-color, 3%));
+		}
+		&:focus {
+			@include linear-gradient(tint($primary-color,15%), tint($primary-color, 3%));
+			outline:0;
+		}
+		&.has-spinner {
+			.spinner {
+				border-color:rgba(255,255,255,0.4);
+				border-left-color:rgba(255,255,255,0.8);
+			}
+		}
+	}
+	&.cta {
+		@include k-button($brand-color);
+		color:white;
+		font-weight: 600;
+	}
+	&.warning {
+		@include k-button($warning-color);
+		color:white;
+		
+	}
+
+	&.alert {
+		@include k-button($error-color);
+		color:white;
+	
+
+	}
+	&.urgent {
+		@include k-button($error-color);
+		color:white;
+
+	}
+	&.success {
+		@include k-button($success-color);
+		color:white;
+
+	}
+	&.small {
+		padding:1px 8px;
+		font-size:0.8em;
+		font-weight: 400;
+	}
+	&.big {
+		padding:5px 16px;
+		font-size:1.25em;
+	}
+	&.has-icon {
+		//padding-left: 30px;
+		i:before {
+			@include position(relative, 1px 0 0 -5px);
+			@extend .large-text;
+		}
+		i.ki:before {
+			@include position(relative, 3px 0 0 -5px);
+			@extend .large-text;
+		}
+	}
+	&.has-spinner {
+		.spinner {
+			display: inline-block;
+			position:relative;
+			top:2px;
+			left:-2px;
+			margin-right: 3px;
+		}
+	}
+	&.icon-button {
+		i:before {
+			position: relative;
+			top:2px;
+		}
+	}
+	&.buttonlink {
+		background: transparent;
+		border:0;
+		font-weight: 400;
+		box-shadow: 0 0 0 transparent !important;
+		color:tint($primary-color,20%);
+		padding:3px 10px;
+		&.subtle {
+			color:shade($steel,35%);
+			&:hover {
+				color:shade($steel, 60%);
+			}
+		}
+		&.alert {
+			color:$error-color;
+			background: transparent;
+			border:0;
+			box-shadow: 0 0 0 transparent;
+			text-shadow: 0 0 0 transparent;
+			&:hover {
+				background: transparent;
+				border:0;
+				box-shadow: 0 0 0 transparent;
+				text-shadow: 0 0 0 transparent;
+				color:$error-color;
+			}
+		}
+		&.urgent {
+			color:tint($error-color, 10%);
+			background: transparent;
+			border:0;
+			box-shadow: 0 0 0 transparent;
+			text-shadow: 0 0 0 transparent;
+			&:hover {
+				background: transparent;
+				border:0;
+				box-shadow: 0 0 0 transparent;
+				text-shadow: 0 0 0 transparent;
+				color:$error-color;
+			}
+		}
+		&.warning {
+			color:$warning-color;
+			background: transparent;
+			border:0;
+			box-shadow: 0 0 0 transparent;
+			text-shadow: 0 0 0 transparent;
+			&:hover {
+				background: transparent;
+				border:0;
+				box-shadow: 0 0 0 transparent;
+				text-shadow: 0 0 0 transparent;
+				color:$warning-color;
+			}
+		}
+		&:hover {
+			background: transparent;
+			border:0;
+			box-shadow: 0 0 0 transparent;
+			text-shadow: 0 0 0 transparent;
+			color:$primary-color;
+		}
+		&:active {
+			box-shadow: inset 0 2px 6px rgba(0,0,0,0) !important;
+		}
+	}
+	
+	&.disabled {
+		border:0;
+		box-shadow:0 0 0 transparent !important;
+		background:tint($gray, 80%);
+		color:tint($gray, 40%);
+		text-shadow: 0 0 0 transparent !important;
+		&:hover {
+			border:0;
+			box-shadow:0 0 0 transparent !important;
+			background:tint($gray, 80%);
+			color:tint($gray, 40%);
+			text-shadow: 0 0 0 transparent !important;
+			cursor: no-drop;
+		}
+	}
+}
+
+.buttonlink {
+	padding:5px 16px;
+	background: transparent !important;
+	&.disabled {
+		//background: transparent;
+	}
+}
+
+/* Buttons in card-header */
+
+.card-header {
+	.button {
+		&.buttonlink {
+			margin-top:0.75em;
+
+		}
+		&.small {
+			margin-top:1.25em;
+		}
+	}
+}
+
+// Maybe these buttons will open your heart to my love for you...
+
+.button-group {
+	.button {
+		float: left;
+		border-radius: 0px;
+		&.active {
+			box-shadow: inset 0 1px 8px rgba(0,0,0,0.3) !important;
+		}
+		&:first-of-type {
+			border-radius: 3px 0 0 3px;
+		}
+		&:last-of-type {
+			border-radius: 0 3px 3px 0;
+
+		}
+
+		& + .button {
+			margin-left: -1px;
+		}
+
+	}
+	& + .dropdown {
+		border-radius:3px 0 0 3px !important;
+	}
+	.dropdown {
+		float:left;
+	}
+	&.fill {
+		&.two-buttons {
+			.button {
+				width: 50%;
+			}
+		}
+		&.three-buttons {
+			.button {
+				width:33.333333%;
+			}
+		}
+		&.four-buttons {
+			.button {
+				width:25%;
+			}
+		}
+		&.five-buttons {
+			.button {
+				width:20%;
+			}
+		}
+		&.six-buttons {
+			.button {
+				width:16.6666667%;
+			}
+		}
+		&.seven-buttons {
+			.button {
+				width:14.28571%;
+			}
+		}
+	}
+}
+
+@for $i from 2 through 10 {
+	.buttons-#{$i} {
+		.button {
+			width:(100%/$i);
+		}
+	}
+}
+
+.dropdown {
+	position: relative;
+	&.active {
+		display: block;
+		.button {
+			border-radius: 3px 3px 0px 0px;
+			box-shadow: inset 0 2px 8px rgba(0,0,0,0.3) !important;
+			outline: 0;
+		}
+		.dropdown-list {
+			display: block;
+		}
+	}
+	&.up {
+		display: block;
+		.button {
+			border-radius: 3px 3px 0px 0px;
+			box-shadow: inset 0 2px 8px rgba(0,0,0,0.3) !important;
+			outline: 0;
+		}
+		.dropdown-list {
+			display: block;
+		}
+	}
+	.button {
+		border-radius: 3px;
+		padding-right:16px;
+		&:after {
+			content:"^";
+			font-family: "KareoIcons";
+			font-size:round($base-font-size - ($base-font-size * 0.2));
+			@include position(relative, 1px 0 0 0.25em);
+		}
+		&.primary {
+			&:after {
+				content:"^";
+				font-family: "KareoIcons";
+				@include position(relative, 0.1px 0 0 0.25em);
+			}
+		}
+		&.buttonlink {
+			&:after {
+				content:"^";
+				font-family: "KareoIcons";
+				font-size:round($base-font-size - ($base-font-size * 0.2));
+				@include position(relative, 1px 0 0 0.25em);
+			}
+			&.success-text {
+				color:shade($success-color, 10%);
+
+			}
+
+			&.info-text {
+				color:shade($primary-color, 20%);
+				&:after {
+					@include triangle(10px, shade($primary-color,20%), down);
+					content:"";
+					@include position(relative, 0.85em 0 0 0.25em);
+				}
+			}
+
+			&.subtle-text {
+				color:tint($gray, 40%);
+			}
+
+			&.warning-text {
+				color:$warning-color;
+			}
+
+			&.error-text {
+				color:$error-color;
+			}
+		}
+	}
+	.dropdown-list {
+		list-style: none;
+		display: none;
+		margin:0;
+		padding:0em;
+		position: absolute;
+		background: white;
+		border-radius:0 3px 3px 3px;
+		border:1px solid tint($gray, 70%);
+		box-shadow: 0 1px 8px rgba(0,0,0,0.15);
+		z-index: 2000;
+		min-width: 200px;
+		max-width: 400px;
+		background-clip: padding-box;
+		li {
+			padding:0;
+			position:relative;
+			&:first-of-type {
+				margin-top: 5px;
+			}
+			&:last-of-type {
+				margin-bottom: 5px;
+			}
+			&.divide {
+				border-top: 1px solid tint($gray, 85%);
+				margin:5px 0;
+			}
+			&.heading {
+				padding:0.5em 0.75em;
+				color:tint($gray, 40%);
+				font-size:0.8em;
+			}
+			a {
+				display: block;
+				text-decoration: none;
+				padding:0.35em 0.5em;
+				@include truncate(100%);
+				&:hover {
+					background: $primary-color;
+					color:white;
+					&:hover {
+					background: tint($primary-color, 20%);
+					color:white;
+					i.ki:before {
+						color:shade($primary-color, 35%);
+					}
+				}
+
+				}
+				&.selected {
+					background: $primary-color;
+					color:white;
+				}
+			}
+		}
+		&.scrolly {
+			@include scrolly(15em);
+			padding-right:0;
+		}
+		&.has-icons {
+			li {
+				a {
+					position: relative;
+					padding-left: 2.5em;
+					i:before {
+						position: absolute;
+						top:21px;
+						left:0.5em;
+					}
+					i.ki:before {
+						position:absolute;
+						top:19px;
+						left:9px;
+						font-size:1.25em;
+					}
+				}
+			}
+		}
+		&.small {
+			li {
+				a {
+					font-size:0.9em;
+				}
+			}
+		}
+	}
+	.sub-dropdown-list {
+		@extend .dropdown-list;
+
+		padding:8px;
+		box-shadow:0 1px 6px rgba(0,0,0,0.25);
+		left:90%;
+		top:-25px;
+		&.scrolly {
+			@include scrolly(15em);
+			padding-right:0;
+		}
+
+	}
+	.sub-dropdown-list:before, .sub-dropdown-list:after {
+		right: 100%;
+		top: 40px;
+		border: solid transparent;
+		content: " ";
+		height: 0;
+		width: 0;
+		position: absolute;
+		pointer-events: none;
+	}
+
+	.sub-dropdown-list:after {
+		border-color: rgba(255, 255, 255, 0);
+		border-right-color: #fff;
+		border-width: 10px;
+		margin-top: -10px;
+	}
+	.sub-dropdown-list:before {
+		border-color: rgba(221, 221, 221, 0);
+		border-right-color: tint($gray, 70%);
+		border-width: 11px;
+		margin-top: -11px;
+	}
+	&.righty {
+		.dropdown-list {
+			right:0;
+			border-radius: 3px 0 3px 3px;
+		}
+	}
+	&.full {
+		.button {
+			width:100%;
+			text-align: left;
+			&:after {
+				float: right;
+				top:0.35em;
+			}
+		}
+		.dropdown-list {
+			width:100%;
+			border-radius: 0 0 3px 3px;
+		}
+	}
+	&.split {
+		&.active {
+			.button {
+				&:first-of-type {
+					border-radius: 3px 0 0 0;
+					box-shadow: inset 0 1px 0 rgba(255,255,255,0.3), 0 1px 4px rgba(0,0,0,0.2) !important;
+				}
+				&:last-of-type {
+					border-radius: 0 3px 0 0;
+				}
+				&.small {
+					& + .dropdown-list {
+						top:22px;
+					}
+				}
+			}
+			.dropdown-list {
+				top:27px;
+			}
+
+		}
+		.button {
+			&:first-of-type {
+				float: left;
+				border-radius: 3px 0 0 3px;
+				padding-right: 5px;
+				&:after {
+					@include triangle(10px, transparent, down);
+					content:"";
+					@include position(relative, 0.85em 0 0 0.25em);
+				}
+			}
+			&:last-of-type {
+				float: left;
+				border-radius: 0 3px 3px 0;
+				margin-left: -1px;
+				padding-left: 5px;
+			}
+		}
+	}
+}
+
+.dropup {
+	position: relative;
+	&.active {
+		display: block;
+		.button {
+			border-radius: 0 0 3px 3px;
+			box-shadow: inset 0 2px 8px rgba(0,0,0,0.3) !important;
+			outline: 0;
+		}
+		.dropdown-list {
+			display: block;
+		}
+	}
+	&.up {
+		display: block;
+		.button {
+			border-radius: 0 0 3px 3px;
+			box-shadow: inset 0 2px 8px rgba(0,0,0,0.3) !important;
+			outline: 0;
+		}
+		.dropdown-list {
+			display: block;
+		}
+	}
+	.button {
+		border-radius: 3px;
+		padding-right:16px;
+		&:after {
+			content:"^";
+			font-family: "KareoIcons";
+			font-size:round($base-font-size - ($base-font-size * 0.2));
+			display: inline-block;
+			@include transform(rotate(180deg));
+			@include position(relative, 1px 0 0 0.25em);
+		}
+		&.primary {
+			&:after {
+				content:"^";
+				font-family: "KareoIcons";
+				font-size:round($base-font-size - ($base-font-size * 0.2));
+				@include position(relative, 1px 0 0 0.25em);
+			}
+		}
+		&.buttonlink {
+			&:after {
+				content:"^";
+				font-family: "KareoIcons";
+				font-size:round($base-font-size - ($base-font-size * 0.2));
+				@include position(relative, 1px 0 0 0.25em);
+			}
+			&.success-text {
+				color:shade($success-color, 10%);
+
+			}
+
+			&.info-text {
+				color:shade($primary-color, 20%);
+				&:after {
+					@include triangle(10px, shade($primary-color,20%), down);
+					content:"";
+					@include position(relative, -0.75em 0 0 0.4em);
+				}
+			}
+
+			&.subtle-text {
+				color:tint($gray, 40%);
+			}
+
+			&.warning-text {
+				color:$warning-color;
+			}
+
+			&.error-text {
+				color:$error-color;
+			}
+		}
+	}
+	.dropdown-list {
+		list-style: none;
+		display: none;
+		margin:0;
+		padding:0em;
+		position: absolute;
+		background: white;
+		border-radius:3px 3px 3px 0;
+		border:1px solid rgba(0,0,0,0.2);
+		box-shadow: 0 1px 8px rgba(0,0,0,0.15);
+		z-index: 2000;
+		min-width: 10em;
+		background-clip: padding-box;
+		bottom:25px;
+		li {
+			&:first-of-type {
+				margin-top: 5px;
+			}
+			&:last-of-type {
+				margin-bottom: 5px;
+			}
+			&.divide {
+				border-top: 1px solid tint($gray, 85%);
+			}
+			&.heading {
+				padding:0.5em 0.75em;
+				color:tint($gray, 40%);
+				font-size:0.8em;
+			}
+			a {
+				display: block;
+				text-decoration: none;
+				padding:0.35em 0.5em;
+				@include truncate(100%);
+				&:hover {
+					background: tint($primary-color, 20%);
+					color:white;
+					i.ki:before {
+						color:shade($primary-color, 35%);
+					}
+				}
+			}
+		}
+		&.has-icons {
+			li {
+				a {
+					position: relative;
+					padding-left: 2.5em;
+					i:before {
+						position: absolute;
+						top:21px;
+						left:0.5em;
+					}
+					i.ki:before {
+						position:absolute;
+						top:19px;
+						left:9px;
+						font-size:1.25em;
+					}
+				}
+			}
+		}
+		&.small {
+			bottom:29px;
+			li {
+				a {
+					font-size:0.9em;
+				}
+			}
+		}
+	}
+	&.righty {
+		.dropdown-list {
+			right:0;
+			border-radius: 3px 3px 0px 3px;
+		}
+	}
+}
+
+.header-button { // Use this in Card Headers if you want buttons in the header
+	@include position(absolute, 0.7em 1em 0 0);
+	z-index: 5000;
+	.button {
+
+	}
+}
+
+.pill-list {
+	list-style: none;
+	margin: 0;
+	padding:0;
+	li {
+		float: left;
+		background: tint($primary-color, 80%);
+		border-radius: 3px;
+		margin-right: 5px;
+		margin-bottom: 5px;
+		span {
+			padding:5px 10px;
+			color:shade($primary-color, 30%);
+			display: inline-block;
+		}
+		a {
+			padding:3px 8px;
+			text-decoration: none;
+			font-weight: bold;
+			display: inline-block;
+			&:hover {
+
+			}
+		}
+	}
+	&.small {
+		li {
+			span {
+				font-size:0.8em;
+			}
+		}
+	}
+}
+
+.tooltip {
+	position: relative;
+	&:after {
+		content:attr(data-tip);
+		position: absolute;
+		z-index: 3000;
+		min-width: 150px;
+		text-align: center;
+		background: $gray;
+		color:white;
+		padding:10px;
+		border-radius: 3px;
+		font-size:14px;
+		@include transform(scale(0));
+		@include transition(all 0.2s ease-in-out);
+		transform-origin: 18% 115%;
+		-webkit-transform-origin: 18% 115%;
+		bottom:130%;
+		left:-20px;
+	}
+	/*&:before {
+		@include triangle(12px, $gray, down);
+		content:"";
+		position: absolute;
+		bottom: 67%;
+		@include transform(scale(0));
+		@include transition(all 0.2s ease-in-out);
+
+	}*/
+	&:hover {
+		&:after {
+			@include transform(scale(1));
+		}
+		&:before {
+			@include transform(scale(1));
+		}
+	}
+}
+
+.back-btn {
+	padding-left:1em !important;
+	position:relative;
+	top:1em;
+	margin-right:0.75em;
+	float:left;
+	color:tint($gray, 40%);
+	text-decoration:none;
+	&:before {
+		content:"";
+		@include triangle(12px, tint($gray, 60%), left);
+		position: absolute;
+		left:0;
+		top:7px;
+	}
+}
+
+.jumbo-button {
+	@include candy(tint($gray, 90%));
+	width: 100%;
+	border-radius: 3px;
+	display: block;
+	padding:1em;
+	font-size:2em;
+	color:$gray;
+	text-decoration: none;
+	text-shadow: 0 1px 0 white;
+	&:hover {
+		@include candy(tint($gray, 88%));
+	}
+}
+
+.colorbutton {
+	appearance:none;
+	-webkit-appearance:none;
+	padding:1em;
+	width:100%;
+	border:0;
+	background:transparent;
+	border:1px solid rgba(0,0,0,0.15);
+	box-shadow:inset 0 1px 4px rgba(0,0,0,0.15);
+	border-radius:3px;
+	&:active {
+		outline:0;
+	}
+}
+
+

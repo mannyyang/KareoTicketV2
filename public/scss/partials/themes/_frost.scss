@@ -1,0 +1,57 @@
+/*******************************************************
+	Frost Theme
+*******************************************************/
+
+// Apply to body tag
+
+.frost { 
+	.main-header {
+		@include candy($primary-color);
+		.title {
+			@include position(relative, 13px 0 0 15px);
+			color:darken($primary-color, 30%);
+			text-shadow: 0 1px 0 lighten($primary-color, 10%);
+		}
+		.dropdown {
+			top:0.75em;
+			.button {
+				color:darken($primary-color, 30%);
+				text-shadow: 0 1px 0 tint($primary-color, 10%);
+				&:after {
+					@include triangle(10px, darken($primary-color,30%), down);
+					content:"";
+					@include position(relative, 0.85em 0 0 0.25em);
+				}
+			}
+		}
+	}
+	.local-nav {
+		background: desaturate(shade($primary-color, 25), 10);
+		ul {
+			
+			li {
+				a {
+					display: block;
+					color:desaturate(tint($primary-color, 20%), 20);
+					text-decoration: none;
+					padding:0.75em 1.5em;
+					position: relative;
+					text-align: right;
+					&:hover {
+						background: desaturate(shade($primary-color, 15), 10);
+						color:white;
+					}
+					&.selected {
+						font-weight: bold;
+						&:after {
+							content:"";
+							@include triangle(24px, whitesmoke, left);
+							position: absolute;
+							right: 0;
+						}
+					}
+				}
+			}
+		}
+	}
+}

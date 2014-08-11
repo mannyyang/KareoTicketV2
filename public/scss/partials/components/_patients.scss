@@ -1,0 +1,94 @@
+/*****************************************************
+	Patients
+****************************************************/
+
+#demographics {
+	.def-list .def-list-row .def-list-term {
+		width: 7em;
+	}
+}
+
+.drawer-header {
+	img  {
+		max-width: 100%;
+		position: absolute;
+		top:-2em;
+		border: 3px solid white;
+		box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+	}
+}
+
+img.patient-photo {
+	width: 100%;
+	position: absolute;
+	top: -1.5em;
+	border: 4px solid white;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+	border-radius:3px;
+	&.circle {
+		border-radius: 30em;
+	}
+	&.basic {
+		position: relative;
+		top:0;
+		border:0;
+		box-shadow:0 0 0 transparent;
+		&.has-border {
+			border:3px solid white;
+			box-shadow:0 1px 2px rgba(0,0,0,0.15);
+		}
+	}
+}
+
+.patient-section {
+	.patient-section-heading {
+		h2 {
+			display: inline-block;
+			margin-bottom: 7px;
+			margin-top: 13px;
+			margin-left: 5px;
+		}
+	}
+}
+
+.patient-flag {
+	left:0em;
+	top:-2.5em;
+	position: absolute;
+}
+
+// Patient Creation
+
+.duplicate-carousel {
+	position: absolute;
+	right: 0.5em;
+	top: 0.25em;
+	.prev-duplicate {
+		&:before {
+			content:"";
+			display: block;
+			@include triangle(12px, shade($steel, 20%), left);
+		}
+		&:hover {
+			&:before {
+				content:"";
+				display: block;
+				@include triangle(12px, shade($steel, 30%), left);
+			}
+		}
+	}
+	.next-duplicate {
+		&:before {
+			content:"";
+			display: block;
+			@include triangle(12px, shade($steel, 20%), right);
+		}
+		&:hover {
+			&:before {
+				content:"";
+				display: block;
+				@include triangle(12px, shade($steel, 30%), right);
+			}
+		}
+	}
+}

@@ -1,0 +1,34 @@
+
+
+.marketing {
+	overflow:hidden;
+	padding-top:3em;
+	&.erx {
+		background-image:url("#{$_imgPath}erx.png");
+		background-repeat:no-repeat;
+		background-position: 50% 1em;
+		padding-top: 9em;
+	}
+}
+
+img.erx-marketing {
+	width: 14em;
+	position: absolute;
+	top: -1em;
+	left: -2em;
+	opacity: .3;
+}
+
+img.notes-tour {
+	position: absolute;
+	top: -0.75em;
+	left: -2.5em;
+	width: 12em;
+}
+
+img.import-patients {
+	position: absolute;
+	top: -2.25em;
+	left: -2.25em;
+	width: 11em;
+}

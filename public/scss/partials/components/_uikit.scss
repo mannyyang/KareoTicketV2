@@ -1,0 +1,233 @@
+/********************************
+	UI kit specific styles
+*********************************/
+
+.ui-kit-hero {
+	@include linear-gradient(shade(desaturate($primary-color, 10%), 33%), shade(desaturate($primary-color, 10%), 50%));
+	
+	width:100%;
+	float:left;
+	padding:6em 3em 9em 3em;
+	text-align:center;
+	h1 {
+		color:white;
+		margin:0;
+		font-size:3em;
+		font-weight: 500;
+	}
+	p {
+		color:tint(desaturate($primary-color, 20%), 40%);
+		text-shadow:0 -1px 0 rgba(0,0,0,0.4);
+		font-size:1.5em;
+		margin:0;
+	}
+}
+
+.style-guide-nav {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	position: absolute;
+	left: 15em;
+	top: -8px;
+	li {
+		float:left;
+		a {
+			display: block;
+			padding: 1.3em 1em 0em 1em;
+			height: 63px;
+			color: white;
+			font-weight: 600;
+			text-decoration: none;
+			border-left:1px solid transparent;
+			border-right:1px solid transparent;
+			&:hover {
+				@include candy(tint($primary-color, 10%));
+				border-top:0;
+			}
+			&.selected {
+				@include candy(tint($primary-color, 10%));
+				box-shadow:inset 0 1px 8px rgba(0,0,0,0.2);
+				background:shade($primary-color, 20%);
+				border-top:0;
+			}
+		}
+	}
+}
+
+.grid-ex {
+		background: #eee;
+		padding:01em 0;
+		text-align: center;
+		border-radius: 3px;
+		font-size:0.8em;
+		color:#999;
+	}
+
+
+	h1.kit-logo {
+		margin:0;
+		font-size:1.5em;
+		color:white;
+		text-shadow: 0 -1px 0 rgba(0,0,0,0.2);
+	}
+
+	.ui-kit-color {
+		padding-bottom: 1em;
+		text-align: center;
+		border:1px solid #ddd;
+		box-shadow: 0 1px 6px rgba(0,0,0,0.15);
+		border-radius: 3px;
+	}
+
+	.ui-kit-color h3,
+	.ui-kit-color h4 {
+		margin:0 0 0.25em 0;
+
+	}
+	.ui-kit-color h3 {
+		font-weight: 400;
+		margin-top:0.5em;
+	}
+
+	.ui-kit-color h4 {
+		font-weight: 300;
+	}
+
+	.box {
+		width:100%;
+		float: left;
+		height:10em;
+		margin-bottom: 0.75em;
+		border-radius: 3px 3px 0 0;
+	}
+
+	.box2 {
+		width:100%;
+		float: left;
+		height:8em;
+		margin-bottom: 0.75em;
+		border-radius: 3px 3px 0 0;
+	}
+
+	.box.orange {
+		background: #F7941D;
+	}
+	.box.blue {
+		background: #3371b6;
+	}
+	.box.gray {
+		background: #454859;
+	}
+	.box2.green {
+		background: #6fcd83;
+	}
+	.box2.lightgray {
+		background: #e4e5ea;
+	}
+	.box2.red {
+		background: #F26649;
+	}
+	.box2.gold {
+		background: #f0ad4e;
+	}
+
+	
+
+	.color {
+		margin-bottom: 2em;
+	}
+
+	.color .primary {
+		background: #3371b6;
+		height: 32px;
+		border-radius: 3px;
+	}
+
+	.color .brand {
+		background: #F7941D;
+		height: 32px;
+		border-radius: 3px;
+	}
+
+	.color .gray {
+		background: #444;
+		height: 32px;
+		border-radius: 3px;
+	}
+
+	.color .urgent {
+		background: #F26649;
+		height: 32px;
+		border-radius: 3px;
+	}
+
+	.color .warning {
+		background: #f0ad4e;
+		height: 32px;
+		border-radius: 3px;
+	}
+
+	.color .success {
+		background: #6fcd83;
+		height: 32px;
+		border-radius: 3px;
+	}
+
+	.ki-icons i.ki:before {
+		font-size:2em;
+	}
+
+	.transitioning {
+		left:0;
+	}
+
+	.transitioning.move {
+		left:80%;
+	}
+
+// Code blocks
+
+.code-block {
+	width:100%;
+	float:left;
+	border:1px solid shade($steel, 2.5%);
+	border-radius:3px;
+	margin-bottom:2em;
+	&:last-of-type {
+		margin-bottom: 0;
+	}
+	.code-block-ui {
+		padding:3em 1em 1em 1em;
+		float:left;
+		width:100%;
+		position:relative;
+		&:before {
+			content:"Example";
+			text-transform: uppercase;
+			font-weight: bold;
+			position:absolute;
+			color:tint($gray, 50%);
+			letter-spacing: 1px;
+			top:10px;
+			@extend .small-text;
+
+		}
+	}
+	.code-block-code {
+		float:left;
+		width:100%;
+		position:relative;
+		
+	}
+}
+
+code {
+	background:$steel;
+	padding:2px 5px;
+	border-radius:3px;
+	@extend .small-text;
+}
+pre code {
+	background:transparent;
+}

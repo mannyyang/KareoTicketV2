@@ -1,0 +1,42 @@
+/******************************************************
+	Agenda styles
+	
+******************************************************/
+
+.agenda-list {
+	li {
+		&.status-box {
+			padding:0;
+			width: 100%;
+			display: block;
+			float: left;
+			
+
+			a.link {
+				font-size:1.25em;
+				&:hover {
+					background: white;
+				}
+			}
+			.dropdown-list {
+				li {
+					a {
+						display: block;
+						border-radius: 0;
+					}
+				}
+			}
+			a.flag {
+				&:before {
+					border-top:10px solid transparent;
+				}
+			}
+		}
+		.agenda-list-details {
+			padding:0 1em 1em 1em;
+			a {
+				display: inline-block;
+			}
+		}
+	}
+}

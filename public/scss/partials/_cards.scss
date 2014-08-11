@@ -1,0 +1,155 @@
+/*************************************************
+	Cards
+**************************************************/
+
+// 	Cards are beautiful UI layout systems. Almost as beautiful as your face, my love. 
+
+.card {
+	@include clearfix;
+	border-radius: 3px;
+	background: white;
+	box-shadow: 0 1px 2px rgba(0,0,0,0.15);
+	//border:1px solid tint($gray,90%);
+	margin-bottom: 2em;
+	
+	.card-header {
+		border-bottom: 1px solid tint($gray, 90%);
+		position: relative;
+		@include clearfix;
+		h2 {
+			font-weight: 600;
+			font-size:1.25em;
+			margin:0;
+			padding:0.5em 0.65em;
+			float: left;
+			display: inline-block;
+		}
+		.corner-btn {
+			@include position(absolute, 1em 1em 0 0);
+		}
+		.close {
+			position: absolute;
+			right:1em;
+			top:0.35em;
+			z-index: 3000;
+			color:tint($gray, 70%);
+			text-decoration: none;
+			font-weight: bold;
+			font-size:1.5em;
+			&:hover {
+				color:$gray;
+			}
+		}
+		&.rainbow {
+			&:before {
+				height: 3px;
+				content:"";
+				position: relative;
+				width: 100%;
+				display: block;
+				content: "";
+			background: #e4681e; /* Old browsers */
+			background: -moz-linear-gradient(left,  #e4681e 0%, #e4681e 20%, #f7921e 20%, #f7921e 40%, #6bab44 40%, #6bab44 60%, #139fd2 60%, #139fd2 80%, #0074b7 80%, #0074b7 100%); /* FF3.6+ */
+			background: -webkit-gradient(linear, left top, right top, color-stop(0%,#e4681e), color-stop(20%,#e4681e), color-stop(20%,#f7921e), color-stop(40%,#f7921e), color-stop(40%,#6bab44), color-stop(60%,#6bab44), color-stop(60%,#139fd2), color-stop(80%,#139fd2), color-stop(80%,#0074b7), color-stop(100%,#0074b7)); /* Chrome,Safari4+ */
+			background: -webkit-linear-gradient(left,  #e4681e 0%,#e4681e 20%,#f7921e 20%,#f7921e 40%,#6bab44 40%,#6bab44 60%,#139fd2 60%,#139fd2 80%,#0074b7 80%,#0074b7 100%); /* Chrome10+,Safari5.1+ */
+			background: -o-linear-gradient(left,  #e4681e 0%,#e4681e 20%,#f7921e 20%,#f7921e 40%,#6bab44 40%,#6bab44 60%,#139fd2 60%,#139fd2 80%,#0074b7 80%,#0074b7 100%); /* Opera 11.10+ */
+			background: -ms-linear-gradient(left,  #e4681e 0%,#e4681e 20%,#f7921e 20%,#f7921e 40%,#6bab44 40%,#6bab44 60%,#139fd2 60%,#139fd2 80%,#0074b7 80%,#0074b7 100%); /* IE10+ */
+			background: linear-gradient(to right,  #e4681e 0%,#e4681e 20%,#f7921e 20%,#f7921e 40%,#6bab44 40%,#6bab44 60%,#139fd2 60%,#139fd2 80%,#0074b7 80%,#0074b7 100%); /* W3C */
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e4681e', endColorstr='#0074b7',GradientType=1 ); /* IE6-9 */
+			}
+		
+		}
+	}
+	.card-content {
+		padding:1em;
+		border-bottom: 1px solid tint($gray,90%);
+		@include clearfix;
+		position: relative;
+		&.skinny {
+			padding:0;
+		}
+		
+		&:last-of-type {
+			border-bottom:0;
+		}
+		&.medium-scrolly {
+			@include scrolly(20em);
+		}
+		.corner-btn {
+			@include position(absolute, 1em 1em 0 0);
+			z-index: 5000;
+		}
+		
+		
+	}
+	.card-actions {
+		padding:1em;
+	}
+	&.grid {
+		.card-content {
+			border-bottom: 0;
+			&[class^='grid-'] {
+				margin-right: 0;
+			}
+			&:nth-of-type(3) {
+				border-left: 1px solid tint($gray, 90%);
+			}
+			&:last-of-type {
+				
+				border-top: 1px solid tint($gray, 90%);
+			}
+		}
+	}
+	&.dark {
+		background: desaturate(darken($primary-color, 22), 35);
+		.card-header {
+			border-bottom: 1px solid desaturate(darken($primary-color, 27), 35);
+			h2 {
+				color:white;
+			}
+		}
+		.card-content {
+			border-bottom: 1px solid desaturate(darken($primary-color, 27), 35);
+			box-shadow: inset 0 1px 0px desaturate(darken($primary-color, 17), 35);
+			color:desaturate(lighten($primary-color, 15), 65);
+			
+			&:last-of-type {
+				border-radius: 0 0 3px 3px;
+			}
+			.lined-link-list {
+				li {
+					a {
+						&:hover {
+							background:  desaturate(darken($primary-color, 25), 35);
+						}
+					}
+				}
+			}
+			.default.button {
+				border-radius:3px;
+			}
+		}
+	}
+}
+
+
+
+.slide-card {
+	position: relative;
+	@include transition(all ease 0.25s);
+	.slider {
+		position: absolute;
+		//@include transition(all ease 0.2s);
+	}
+}
+
+.modal-off-canvas {
+	position: absolute;
+	right:-100%;
+	bottom:0em;
+	@include transition(all ease-in-out 500ms);
+	&.show {
+		right:1em;
+	}
+	
+}

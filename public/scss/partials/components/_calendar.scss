@@ -1,0 +1,326 @@
+/*************************************************
+	Calendar
+**************************************************/
+
+
+.calendar-item {
+	height:4em;
+	box-shadow:0 1px 5px rgba(0,0,0,0.1);
+	border:1px solid tint($gray, 80%);
+	border-radius:3px 0 0 3px;
+	border-left-width:4px;
+	position:relative;
+	.calendar-item-resize-west {
+		width:4px;
+		height:100%;
+		left:0;
+		top:0;
+		position:absolute;
+		z-index: 3000;
+		&:hover {
+			cursor: w-resize;
+		}
+	}
+	.calendar-item-resize-east {
+		width:4px;
+		height:100%;
+		right:0;
+		top:0;
+		position:absolute;
+		z-index: 3000;
+		&:hover {
+			cursor: e-resize;
+		}
+	}
+	.calendar-item-resize-north {
+		height:4px;
+		width:100%;
+		left:0;
+		top:0;
+		position:absolute;
+		z-index: 3000;
+		&:hover {
+			cursor: n-resize;
+		}
+	}
+	.calendar-item-resize-south {
+		height:4px;
+		width:100%;
+		left:0;
+		bottom:0;
+		position:absolute;
+		z-index: 3000;
+		&:hover {
+			cursor: s-resize;
+		}
+	}
+	.calendar-item-content {
+		padding:3px 0 0 5px;
+		.last-name, .first-name {
+			font-size:0.9em;
+			line-height: 1;
+			text-transform: lowercase;
+			@include truncate(calc(100% - 20px));
+			&:first-letter {
+				text-transform: uppercase;
+			}
+		}
+		.last-name {
+			font-weight: bold;
+		}
+		.reason {
+			font-size:0.8em;
+			color:tint($gray, 30%);
+			margin-top: 5px;
+		}
+		.status {
+			
+			position:absolute;
+			right:0px;
+			top:0px;
+			i.ki:before {
+				color:$gray;
+				position:absolute;
+				top:0.75em;
+				right:0.25em;
+				font-size:0.9em;
+			}
+		}
+		.recurring {
+			i:before {
+				position:absolute;
+				bottom:8px;
+				right:4px;
+				font-size:1em;
+			}
+		}
+	}
+	&.time-off {
+		background:tint($steel, 10%);
+		border-left-width:1px;
+		z-index:3px;
+		background: repeating-linear-gradient(
+		    45deg,
+		    tint($steel, 10%),
+		    tint($steel, 10%) 1em,
+		    tint($steel, 30%) 1em,
+		    tint($steel, 30%) 2em
+		  );
+		background: -webkit-repeating-linear-gradient(
+		    45deg,
+		    tint($steel, 10%),
+		    tint($steel, 10%) 1em,
+		    tint($steel, 30%) 1em,
+		    tint($steel, 30%) 2em
+		  );
+		.reason {
+			color:$gray;
+			font-size:0.9em;
+			position:absolute;
+			bottom:0;
+		}
+	}
+	&.staff-event {
+		background:tint($gray, 30%);
+		border-color:$gray;
+		.reason {
+			color:white;
+			font-size:0.9em;
+		}
+	}
+
+}
+
+/* Monthly Calendar */
+
+.month-column {
+	width:14.28571%;
+	float:left;
+	position:relative;
+	margin-top:-1px;
+	
+	&:first-of-type {
+		
+		.month-column-header {
+			border-left-width:1px;
+		}
+		.month-column-day {
+			border-left:1px solid shade($steel, 10%);
+			
+		}
+	}
+	&:last-of-type {
+		.month-column-header {
+			border-right-width:1px;
+		}
+	}
+	.month-column-header {
+		@include candy($steel);
+		box-shadow:inset 0 1px 0 white, 0 1px 8px rgba(0, 0, 0, 0);
+		font-size:0.8em;
+		padding:0.25em 0.5em;
+		margin:0;
+		border-left-width:0;
+		color:shade($steel, 60%);
+		text-align: center;
+		text-shadow:0 1px 0 tint($steel, 40%);
+		
+	}
+	.month-column-day {
+		width:100%;
+		float:left;
+		background:tint($primary-color, 95%);
+		height:8em;
+		padding:0.5em;
+		position:relative;
+		border-bottom:1px solid shade($steel, 10%);
+		border-right:1px solid shade($steel, 10%);
+		color:shade(desaturate($primary-color, 30%),3%);
+		&:hover {
+			background:tint($primary-color, 90%);
+			cursor: pointer;
+		}
+		&.past {
+			background:white;
+			&:hover {
+				background:tint($steel, 70%);
+			}
+			.month-column-day-appts {
+				color:shade($steel, 12%);
+				&:after {
+					color:shade($steel, 12%);
+				}
+			}
+			.month-column-day-label {
+				color:shade($steel, 12%);
+			}
+		}
+		&.current-day {
+			background:tint($primary-color, 85%);
+
+			&:hover {
+				background:tint($primary-color, 80%);
+				cursor: pointer;
+			}
+				
+		}
+		&.future {
+			background:desaturate(tint($primary-color, 88%), 25%);
+			&:hover {
+				background:desaturate(tint($primary-color, 82%), 25%);
+			}
+		}
+		.month-column-day-label {
+			font-size:0.8em;
+			font-weight: 600;
+			color:tint(desaturate($primary-color, 30%),10%);
+			margin-bottom: 0.75em;
+		}
+		.month-column-day-appts {
+			text-align: center;
+			font-size:1.75em;
+			font-weight: 400;
+			margin:0;
+			line-height: 1;
+			margin-top:0.5em;
+			.month-column-day-appts-label {
+				display:block;
+				font-size:0.4em;
+				font-weight:400;
+			}
+			&:empty {
+				&:after {
+					content:"";
+				}
+			}
+		} 
+		.month-column-day-holiday {
+			position:absolute;
+			bottom:10px;
+			font-size:0.8em;
+			i:before {
+				color:$brand-color;
+			}
+		}
+	}
+}
+
+.card {
+	.card-content {
+		&.calendar-header {
+		
+			padding:0.5em 1em;
+			.button {
+				margin-top:2px;
+			}
+		}
+	}
+}
+
+// Duplicate Patients styles
+.matched-text {
+	color:$warning-color;
+	font-weight:bold;
+	border-bottom:2px solid $warning-color;
+}
+
+.popup {
+    position: absolute;
+    z-index: 100;
+    background: $gray;
+    color: white;
+    border-radius: 3px;
+    min-width: 15em;
+    max-width: 100%;
+    left: 0;
+    bottom: 3em;   
+}
+
+.popup:after {
+    top: 100%;
+    left: 3em;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    border-color: rgba(39, 53, 68, 0);
+    border-top-color: $gray;
+    border-width: 6px;
+    margin-left: -6px;
+}
+
+.popup-header {
+    color: white;
+    font-weight: bold;
+    margin: 0;
+    padding: 0.5em 0.5em 0 0.5em;
+    border-radius: 3px 3px 0 0;
+}
+.popup .small-text {
+    color: $steel;
+    font-weight: 400;
+}
+
+.popup-content {
+    padding: 0.5em;
+    border-radius: 0 0 3px 3px;
+}
+
+// Confirm changes to appointments
+
+.was {
+	background:shade($steel, 10%);
+	color:tint($gray, 20%);
+	text-decoration: line-through;
+	padding:3px 8px;
+	border-radius: 3px;
+}
+
+.isnow {
+	background: $success-color;
+	padding:3px 8px;
+	border-radius: 3px;
+	color:white;
+}

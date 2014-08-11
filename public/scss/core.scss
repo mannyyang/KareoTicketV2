@@ -1,0 +1,39 @@
+/******************************************************
+	Core styles
+
+	Oct 4 2013
+
+	Galvatron
+
+******************************************************/
+
+@import 'bourbon/bourbon';
+@import 'partials/normalize';
+@import 'partials/variables';
+@import 'partials/helpers';
+@import 'partials/grid';
+@import 'partials/typography';
+@import 'partials/buttons';
+@import 'partials/forms';
+@import 'partials/tables';
+@import 'partials/icons';
+@import 'partials/cards';
+@import 'partials/datatables';
+@import 'partials/textEditor';
+@import 'partials/components/uikit';
+@import 'partials/components/header';
+@import 'partials/components/maincontent';
+@import 'partials/components/dashboard';
+@import 'partials/components/patients';
+@import 'partials/components/agenda';
+@import 'partials/components/payments';
+@import 'partials/components/referrals';
+@import 'partials/components/eligibilityreport';
+@import 'partials/components/footer';
+@import 'partials/components/nav';
+@import 'partials/components/calendar';
+@import 'partials/components/notes';
+// @import 'partials/components/marketing';
+@import 'partials/themes/frost';
+@import 'partials/themes/ice';
+@import 'partials/print';

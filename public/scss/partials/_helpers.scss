@@ -1,0 +1,511 @@
+/*************************************************
+	Helper classes
+	
+	We all need help sometimes. 
+	
+**************************************************/
+
+// HELPER CLASS GENERATOR
+// Syntax:	 	Property > Direction > Size
+// Example: 	Margin Bottom Large = .mbl
+
+//a list of all properties you want to create helpers for, and their aliases
+$helper-properties: 
+	"margin" "padding",
+	"m" "p";
+
+//a list of all directions you want to create helpers for, and their aliases
+$helper-direction: 
+	"" "-top" "-bottom" "-left" "-right",
+	"" "t" "b" "l" "r";
+
+//a list of all heights you want to create helpers for, and their aliases
+$helper-height:
+//	none	small	medium	large
+	"0"		"0.5em"	"1em"	"2em",
+	"n" 	"s" 	"m" 	"l";
+
+// subdivides the arrays
+$prop-title: nth($helper-properties, 1);
+$prop-label: nth($helper-properties, 2);
+$dir-title: nth($helper-direction, 1);
+$dir-label: nth($helper-direction, 2);
+$h-title: nth($helper-height, 1);
+$h-label: nth($helper-height, 2);
+
+// iterates through and creates all the helper classes
+@for $p from 1 through length($prop-title){	
+	@for $d from 1 through length($dir-title){
+		@for $h from 1 through length($h-title){
+			.#{nth($prop-label, $p)}#{nth($dir-label, $d)}#{nth($h-label, $h)}{
+				#{nth($prop-title, $p)}#{nth($dir-title, $d)}: #{nth($h-title, $h)} !important;
+			}
+		}
+	}	
+}
+
+.nm {
+	margin: 0 !important;
+}
+
+/* Borders. Drawing the line where you see fit.  */
+
+.bb { // Border bottom 
+	border-bottom: 1px solid tint($gray,90%);
+}
+
+.bt { // Border top
+	border-top: 1px solid tint($gray,90%);
+}
+
+.nb {
+	border: none;
+}
+
+.left {
+	float: left;
+	position: relative;
+}
+
+.right {
+	float: right;
+	position: relative;
+}
+
+.alignright {
+	text-align: right;
+}
+
+.alignleft {
+	text-align: left;
+}
+
+.aligncenter {
+	text-align: center;
+}
+
+.hide {
+	display: none !important;
+}
+
+.breakword {
+	word-break:break-all;
+	-ms-word-break: break-all;
+    // Non standard for webkit
+    word-break: break-word;
+}
+
+.payment-input {
+	position: absolute;
+	left:10em;
+	top:-0.1em;
+	width:5em;
+}
+
+.bringup {
+	z-index: 4000;
+}
+
+.text-alignmiddle {
+	vertical-align: middle;
+}
+
+/* Truncate Stuff */
+
+@mixin truncate($width) {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: block;
+	width:$width;
+}
+
+.truncate { // Use if attaching to an element that already has a width (like a grid)
+	@include truncate(100%);
+}
+
+.proper-caps {
+	text-transform:lowercase;
+	&:first-letter {
+		text-transform:uppercase;
+	}
+}
+
+/* Candy mixin. Make elements look shiny and pretty. Like candy. */
+
+@mixin candy($color) {
+	@include linear-gradient($color, darken($color, 8%));
+	border:1px solid darken($color, 20%);
+	box-shadow: inset 0 1px 0 lighten($color, 20%), 0 1px 8px rgba(0,0,0,0.2);
+}
+
+@mixin scrolly($height) {
+	max-height: $height;
+	overflow-y: scroll;
+}
+
+// Styles to reset scroll bars for webkit browsers. 
+
+/*
+
+::-webkit-scrollbar {
+	width:0.3em;
+}
+::-webkit-scrollbar-track {
+    background:$steel;
+    border-radius: 0px;
+}
+ 
+::-webkit-scrollbar-thumb {
+    background:shade($steel, 20%);
+    border-radius:0px; 
+}
+
+*/
+
+.scrolly-30 {
+	@include scrolly(30em);
+
+}
+
+.scrolly-40 {
+	@include scrolly(40em);
+	
+}
+
+.scrolly-50 {
+	@include scrolly(50em);
+	
+}
+
+.kit-header {
+	width:100%;
+	@include linear-gradient($brand-color, darken($brand-color, 8%));
+	padding:0.5em 0;
+	
+	border-bottom: 1px solid darken($brand-color, 20%);
+	//border-top: 1px solid darken($brand-color, 20%);
+	box-shadow: inset 0 1px 0 lighten($brand-color, 20%), 0 1px 8px rgba(0,0,0,0.2);
+	img {
+		display: block;
+		width:100px;
+		float: left;
+	}
+	.title {
+		color: darken($brand-color, 25%);
+		text-shadow: 0 1px 0 lighten($brand-color, 10%);
+		position: relative;
+		top: 0.75em;
+		left: 1em;
+	}
+}
+
+/* TRANSITIONS */
+
+// Need a generic transition class? 
+
+@for $i from 1 through 10 {
+	.transitioned-#{$i} {
+		@include transition(all ease-in-out #{$i*10}000ms);
+		&.quad {
+			 transition-timing-function:$ease-in-out-quad !important;
+			 -webkit-transition-timing-function:$ease-in-out-quad;
+			 -moz-transition-timing-function:$ease-in-out-quad;
+		}
+		&.back {
+			transition-timing-function: $ease-in-out-back;
+			-webkit-transition-timing-function: $ease-in-out-back;
+			-moz-transition-timing-function: $ease-in-out-back;
+		}
+		&.quart {
+			transition-timing-function: $ease-in-out-quart;
+			-webkit-transition-timing-function: $ease-in-out-quart;
+			-moz-transition-timing-function: $ease-in-out-quart;
+		}
+		&.expo {
+			transition-timing-function: $ease-in-out-expo;
+			-webkit-transition-timing-function: $ease-in-out-expo;
+			-moz-transition-timing-function: $ease-in-out-expo;
+		}
+	}
+}
+
+[class^="transitioned"] {
+	&.quad {
+		 transition-timing-function:$ease-in-out-quad;
+		 -webkit-transition-timing-function:$ease-in-out-quad;
+		 -moz-transition-timing-function:$ease-in-out-quad;
+	}
+}
+
+/*  ANIMATIONS */
+
+.highlighter { //If you want the highlight to persist
+	background:$highlight;
+}
+
+.animate-infinite { // Use for demos or testing
+	 animation-iteration-count:infinite !important;
+	 -moz-animation-iteration-count:infinite !important;
+	 -webkit-animation-iteration-count:infinite !important;
+	 animation-delay: 2s !important;
+	 -webkit-animation-delay: 2s !important;
+	 -moz-animation-delay: 2s !important;
+}
+
+// Highlight
+
+@-webkit-keyframes highlighted {
+  0%   { background-color: transparent; }
+  50%  { background-color: $highlight; }
+  100% { background-color: transparent;}
+}
+@-moz-keyframes highlighted {
+  0%   { background-color: transparent; }
+  50%  { background-color: $highlight; }
+  100% { background-color: transparent;}
+}
+@-o-keyframes highlighted {
+  0%   { background-color: transparent; }
+  50%  { background-color: $highlight; }
+  100% { background-color: transparent;}
+}
+@keyframes highlighted {
+ 0%   { background-color: transparent; }
+  50%  { background-color: $highlight; }
+  100% { background-color: transparent;}
+}
+
+.highlight {
+	@include animation(highlighted 2.0s ease-in-out);
+}
+
+// Spin
+
+@include keyframes (spin) {
+	from {
+		@include transform(rotate(0deg));
+	}
+	to {
+		@include transform(rotate(359deg));
+	}
+}
+
+.spinning {
+	@include animation(spin 0.75s linear infinite);
+	transform-origin:center center;
+	-webkit-transform-origin:center center;
+	display: inline-block;
+	position:relative;
+	left:-5px;
+	&:before {
+		display: inline-block;
+		left:0 !important;
+	}
+}
+
+// Fall/Climb
+
+@include keyframes (falldown) {
+	from {
+		@include transform(translateY(0px));
+	}
+	to {
+		@include transform(translateY(50px));
+	}
+}
+
+@include keyframes (fallup) {
+	from {
+		@include transform(translateY(-50px));
+	}
+	to {
+		@include transform(translateY(0px));
+	}
+}
+
+@include keyframes (climbdown) {
+	from {
+		@include transform(translateY(0px));
+	}
+	to {
+		@include transform(translateY(-50px));
+	}
+}
+
+@include keyframes (climbup) {
+	from {
+		@include transform(translateY(50px));
+	}
+	to {
+		@include transform(translateY(0px));
+	}
+}
+
+.animate-falldown {
+	@include animation(falldown 300ms ease-in-out);
+}
+
+.animate-fallup {
+	@include animation(fallup 300ms ease-in-out);
+}
+
+.animate-climbdown {
+	@include animation(climbdown 300ms ease-in-out);
+}
+
+.animate-climbup {
+	@include animation(climbup 300ms ease-in-out);
+}
+
+// Fadeout/in
+
+@include keyframes (fadeout) {
+	from {
+		opacity:1;
+	}
+	to {
+		opacity:0;
+	}
+}
+
+@include keyframes (fadein) {
+	from {
+		opacity:0;
+	}
+	to {
+		opacity:1;
+	}
+}
+
+.animate-fadein {
+	@include animation(fadein 300ms ease-in-out);
+}
+
+.animate-fadeout {
+	@include animation(fadeout 300ms ease-in-out);
+}
+
+// Shrink/Grow
+
+@include keyframes (shrink) {
+	from {
+		@include transform(scale(1));
+	}
+	to {
+		@include transform(scale(0));
+	}
+}
+
+@include keyframes (grow) {
+	from {
+		@include transform(scale(0));
+	}
+	to {
+		@include transform(scale(1));
+	}
+}
+
+.animate-shrink {
+	@include animation (shrink 300ms ease-in-out);
+}
+
+.animate-grow {
+	@include animation (grow 300ms ease-in-out);
+}
+
+// Combos 
+
+.animate-falldown-fadeout {
+	@include animation(fadeout 300ms ease-in-out, falldown 300ms ease-in-out);
+}
+
+.animate-climbup-fadein {
+	@include animation(fadein 300ms ease-in-out, climbup 300ms ease-in-out);
+}
+
+/* Spinners, loaders */
+
+.spinner {
+	@include animation(spin 0.5s linear infinite);
+	height:20px;
+	width:20px;
+	border:5px solid rgba(0,0,0,0.2);
+	border-left:5px solid rgba(0,0,0,0.45);
+	border-radius:100%;
+	&.small {
+		height:15px;
+		width:15px;
+		
+	}
+	&.big {
+		height:30px;
+		width:30px;
+	
+	}
+	&.huge {
+		height:45px;
+		width:45px;
+	
+	}
+	&.primary {
+		border-color:tint($primary-color, 70%);
+		border-left-color:$primary-color;
+	}
+}
+
+.spinner-message {
+	.spinner {
+		margin-top:2px;
+	}
+}
+
+.loading {
+	@include clearfix;
+	padding:3em;
+	text-align:center;
+	.loading-content {
+		@include clearfix;
+		margin:0 auto;
+		width:50%;
+		.spinner {
+			display: inline-block;
+		}
+		.loading-message {
+		
+			margin:-0.1em 0em 0em 1em;
+		}
+	}
+	&.big-load {
+		.loading-content {
+			.spinner {
+				height:45px;
+				width:45px;
+			}
+			.loading-message {
+				font-size:1.5em;
+				margin:0.25em 1em;
+			}
+		}
+	}
+}
+
+// Images
+
+img {
+	width:100%;
+}
+
+
+// Center Anything!
+
+@mixin centerer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  @include transform(translate(-50%, -50%));
+}
+
+.centered {
+	@include centerer;
+}

@@ -1,0 +1,51 @@
+/**************************************************************
+	Eligibility Specific Styles
+***************************************************************/
+table.report {
+	border-collapse: collapse;
+	.bl {border-left: 1px solid tint($gray,90%);} 
+	.br {border-right: 1px solid tint($gray,90%);} 
+	.bt {border-top: 1px solid tint($gray,90%);} 
+	.bb {border-bottom: 1px solid tint($gray,90%);} 
+	th {border-bottom: inherit; }
+	th, td {
+		border-right: 1px solid tint($gray,90%);
+		padding: 6px;
+		vertical-align: inherit;
+		text-align: center;
+		&:last-child {border-right: 0;}
+		&.info {
+			font-size: .825em;
+			font-weight: normal;
+			padding: 6px 20px;
+			text-align: left;
+		}
+		&.green {background-color: tint($green, 80%) !important;}
+		&.blue {background-color: tint($blue, 80%) !important; }
+	}	
+	tr.hardline {
+		border-top: 1px solid tint($gray, 80%);
+	}
+	tr.type {
+		td.lightgray{
+			background-color: #fafafa !important;
+			background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #fafafa), color-stop(100%, #f4f4f4));
+			background-image: -webkit-linear-gradient(#fafafa, #f4f4f4);
+			background-image: linear-gradient(#fafafa, #f4f4f4);
+		}
+		th.white {
+			background-color: #fff !important;
+			background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #fff), color-stop(100%, #f6f6f6));
+			background-image: -webkit-linear-gradient(#fff, #f6f6f6);
+			background-image: linear-gradient(#fff, #f6f6f6);
+		}
+	}
+	tbody tr:nth-of-type(odd) td {
+		border-bottom: 1px solid tint($blue, 86%);
+		background-color: tint($blue, 95%);
+	}
+}
+
+
+
+

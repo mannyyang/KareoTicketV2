@@ -1,0 +1,39 @@
+form#podio-project-form(accept-charset='UTF-8', method='post', enctype='multipart/form-data', action='/api/addFile', novalidate="")
+    input(name='stage', type='hidden', value='2')
+    .input-group.grid-12
+        label(for='projectTitle') Project name
+        input(name='projectTitle', type='text', required="")
+    .input-group.grid-4
+        label(for='priority') Priority
+        select(name='priority')
+            option(value='')
+            option(value='1') P1
+            option(value='3') P2
+            option(value='4') P3
+    .grid-12.well.mbm.mts
+        h4 Project Owner
+        .input-group
+            label(for='name') Name
+            input(name='owner[name]', type='text', required="")
+        .input-group
+            label(for='email') Email
+            input(name='owner[email]', type='email', required="")
+    .input-group.grid-12
+        label(for='deadline') Deadline
+        input.date-input.localeAwareDate.new-placeholder.hasDatepicker(name='deadline', placeholder='MM/DD/YYYY', type='date', value='', required="")
+    .input-group.grid-12
+        label(for='projectDescription') Project description
+        input(name='projectDescription', type='hidden', class='hidden-input-proj-desc', required="")
+        div.editable.proj-desc
+    .input-group.grid-12
+        label(for='goals') Goals and metrics
+        input(name='goals', type='hidden', class='hidden-input-goals')
+        div.editable.goals
+    .input-group.grid-12
+        label(for='file') Files
+        input(id='fileupload', name='files[]', type='file', data-url='/api/addfile', multiple='')
+        div#progress
+            div.bar(style='width: 0%;')
+
+    .input-group.grid-12
+        input.primary.button(type='submit', value='Submit')

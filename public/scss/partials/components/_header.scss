@@ -1,0 +1,321 @@
+/*******************************************************
+	Header
+*******************************************************/
+
+.main-header {
+    @include candy($brand-color);
+    border-top: 0 !important;
+    border-right: 0 !important;
+    border-left: 0 !important;
+    width: 100%;
+    float: left;
+    padding: 0.5em 0;
+    position: relative;
+    z-index: 200;
+    .logo {
+        display: block;
+        width: 100px;
+        float: left;
+        &.ehr {
+            width: 145px;
+        }
+    }
+    .title {
+        @include position(relative, 13px 0 0 15px);
+        color: darken($brand-color, 30%);
+        text-shadow: 0 1px 0 lighten($brand-color, 10%);
+    }
+    .dropdown {
+        top: 0.5em;
+        position: absolute;
+        right: 1em;
+        .button {
+            color: darken($brand-color, 30%);
+            text-shadow: 0 1px 0 tint($brand-color, 10%);
+            &:after {
+                content: "";
+                @include triangle(12px, white, down);
+            }
+        }
+    }
+}
+
+.alt-header {
+    @include clearfix;
+    background: white;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 100;
+    border-top: 2px solid $brand-color;
+    padding: 0;
+    .alt-header-logo {
+        float: left;
+        padding: 0 1em;
+        img {
+            width: 25px;
+            position: relative;
+            top: 5px;
+        }
+    }
+    .alt-nav {
+        float: left;
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            li {
+                float: left;
+                a {
+                    display: block;
+                    padding: 0.75em 1em;
+                    color: tint($gray, 40%);
+                    text-decoration: none;
+                    i:before {
+                        font-size: 0.9em;
+                        margin-right: 0.2em;
+                    }
+                    &:hover {
+                        color: $gray;
+                    }
+                }
+                &.more {
+                    a {
+                        position: relative;
+                        &:after {
+                            content: "";
+                            @include triangle(8px, tint($gray, 30%), down);
+                            position: absolute;
+                            right: 0;
+                            top: 1.5em;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .search-user {
+        float: right;
+        padding-right: 1em;
+        position: relative;
+        top: 8px;
+        .search {
+            float: left;
+            padding-right: 1em;
+            width: 15em;
+            position: relative;
+            &:before {
+                content: "S";
+                font-family: "KareoIcons";
+                color: tint($gray, 40%);
+                position: absolute;
+                left: 0.5em;
+                top: 0.3em;
+            }
+            input[type="text"] {
+                padding-left: 2em;
+            }
+            .type-ahead-results {
+                top: 2.5em;
+                width: 23em;
+                h3 {
+                    padding: 0.5em 0.75em;
+                    font-size: 1em;
+                    border-bottom: 1px solid $steel;
+                    margin: 0;
+                }
+            }
+        }
+        .user {
+            float: left;
+            position: relative;
+            top: 3px;
+        }
+    }
+    &.brand {
+        background: $brand-color;
+        border-right: 0;
+        border-left: 0;
+        border-top: 0;
+        box-shadow: 0 0 0 transparent;
+        .alt-nav {
+            ul {
+                li {
+                    a {
+                        color: white;
+                        font-weight: 600;
+                        &:hover {
+                            background: shade($brand-color, 5%);
+                        }
+                    }
+                    &.more {
+                        a {
+                            position: relative;
+                            padding-right: 2em;
+                            &:after {
+                                content: "";
+                                @include triangle(8px, white, down);
+                                position: absolute;
+                                right: 1em;
+                                top: 1.5em;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .search-user {
+            .search {
+                &:before {
+                    color: $brand-color;
+                }
+                input[type="text"] {
+                    background: white;
+                    border: 0;
+                    color: $gray;
+                    box-shadow: 0 0 0 transparent;
+                    &:focus {
+                        box-shadow: 0 0 0 transparent;
+                        background: white;
+                    }
+                }
+            }
+            .user {
+                .dropdown {
+                    .button {
+                        color: white;
+                        font-weight: 600;
+                        &:after {
+                            border-top-color: white;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    &.blue {
+        background: #14A0D2;
+        border-right: 0;
+        border-left: 0;
+        border-top: 0;
+        box-shadow: 0 0 0 transparent;
+        .alt-nav {
+            ul {
+                li {
+                    a {
+                        color: white;
+                        &:hover {
+                            background: shade(#14a0d2, 8%);
+                        }
+                    }
+                    &.more {
+                        a {
+                            position: relative;
+                            padding-right: 2em;
+                            &:after {
+                                content: "";
+                                @include triangle(8px, tint(#14a0d2, 60%), down);
+                                position: absolute;
+                                right: 1em;
+                                top: 1.5em;
+                            }
+                            &.hovered {
+                                background: shade(#14a0d2, 8%);
+                            }
+                        }
+                        .more-list {
+                            padding: 0;
+                            margin: 0;
+                            list-style: 0;
+                            background: shade(#14a0d2, 8%);
+                            position: absolute;
+                            width: 12em;
+                            border-radius: 0 0 3px 3px;
+                            li {
+                                float: none;
+                                padding: 0.5em;
+                                a {
+                                    padding: 0.5em;
+                                    display: block;
+                                    color: white;
+                                    border-radius: 3px;
+                                    &:after {
+                                        content: "";
+                                        @include triangle(8px, transparet, down);
+                                    }
+                                    &:hover {
+                                        background: tint(#14a0d2, 3%);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .search-user {
+            top: 0;
+            .search {
+                top: 8px;
+                &:before {
+                    color: #14A0D2;
+                }
+                input[type="text"] {
+                    background: white;
+                    border: 0;
+                    color: $gray;
+                    box-shadow: 0 0 0 transparent;
+                    &:focus {
+                        box-shadow: 0 0 0 transparent;
+                        background: white;
+                    }
+                }
+            }
+            .user {
+                top: 0;
+                a {
+                    display: block;
+                    padding: 0.75em 2em 0.75em 1em;
+                    color: white;
+                    text-decoration: none;
+                    &:after {
+                        content: "";
+                        @include triangle(8px, white, down);
+                        position: absolute;
+                        right: 1em;
+                        top: 1.5em;
+                    }
+                    &.hovered {
+                        background: shade(#14a0d2, 8%);
+                    }
+                }
+                .user-list {
+                    padding: 0;
+                    margin: 0;
+                    list-style: none;
+                    background: shade(#14a0d2, 8%);
+                    position: absolute;
+                    right: 0;
+                    width: 12em;
+                    border-radius: 0 0 3px 3px;
+                    li {
+                        float: none;
+                        padding: 0.5em;
+                        a {
+                            padding: 0.5em;
+                            display: block;
+                            color: white;
+                            border-radius: 3px;
+                            &:after {
+                                content: "";
+                                @include triangle(8px, transparet, down);
+                            }
+                            &:hover {
+                                background: tint(#14a0d2, 3%);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,48 @@
+/*************************************************
+	Print styles
+**************************************************/
+
+@media print {
+	body {
+		font-size:9pt;
+		color:black !important;
+	}
+	.main-header {
+		display: none;
+	}
+	.main-nav {
+		display: none;
+	}
+	.main-content {
+		border:0;
+	}
+	.main-footer {
+		display: none;
+	}
+	.page-controls {
+		display:none;
+	}
+	.card {
+		box-shadow: 0 0 0 transparent;
+		border:1px solid black;
+		.card-content {
+			border-bottom: 1px solid black;
+		}
+	}
+	.flash {
+		display: none;
+	}
+	.button {
+		display: none !important;
+		background:white;
+		color:white;
+		border-color:white;
+	}
+	.well {
+		box-shadow: 0 0 0 transparent;
+		border:1px solid black;
+	}
+	.patient-photo {
+		box-shadow: 0 0 0 transparent;
+	}
+}
