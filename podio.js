@@ -67,7 +67,7 @@
 		    one: function(callback){
 				var options = {
 					app_id: 8527312,
-					auth: podioClassGlobal.token
+					auth: cache.get('token')
 				};
 
 				podioClassGlobal.podioAPI.itemsFilterItems(options, function (err, result) {
