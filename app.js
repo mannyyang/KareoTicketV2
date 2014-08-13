@@ -34,33 +34,7 @@
     });
 
     app.get('/', routes.index);
-    app.post('/', function(req, res){
-
-        debugger;
-
-        // podio.addFile(req.files.attachments.name, req.files.attachments.path);
-        // podio.addProject(req.body);
-        // console.log(req.files);
-        // res.send(req.body);
-    });
-    app.post('/api/addfile', function(req, res){
-
-        var filePath = req.files.files[0].path;
-        var fileName = req.files.files[0].name;
-
-        debugger;
-
-        fs.readFile(filePath, function (err, data) {
-            var newPath = __dirname + "/tempUploads/" + fileName;
-            fs.writeFile(newPath, data, function (err) {
-                console.log("file written \n" + data);
-                podio.addFile(fileName, newPath);
-                res.send({});
-            });
-        });
-
-
-    });
+    app.get('/update', routes.update);
 
     // Start Express Server
     http.createServer(app).listen(app.get('port'), function(){

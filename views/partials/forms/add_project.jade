@@ -1,11 +1,11 @@
-form#podio-project-form(accept-charset='UTF-8', method='post', enctype='multipart/form-data', action='/api/addFile', novalidate="")
-    input(name='stage', type='hidden', value='2')
+form#podio-project-form(accept-charset='UTF-8', method='post', enctype='multipart/form-data', action='https://podio.com/webforms/8527312/642603', target='podio_comm_frame')
+    input(type='hidden', name='field_66149388', value='2')
     .input-group.grid-12
         label(for='projectTitle') Project name
-        input(name='projectTitle', type='text', required="")
+        input(name='field_66149384', type='text', required="")
     .input-group.grid-4
         label(for='priority') Priority
-        select(name='priority')
+        select(name='field_66252952')
             option(value='')
             option(value='1') P1
             option(value='3') P2
@@ -14,26 +14,38 @@ form#podio-project-form(accept-charset='UTF-8', method='post', enctype='multipar
         h4 Project Owner
         .input-group
             label(for='name') Name
-            input(name='owner[name]', type='text', required="")
+            input(name='field_66149386[name]', type='text', required="")
         .input-group
             label(for='email') Email
-            input(name='owner[email]', type='email', required="")
+            input(name='field_66149386[mail]', type='text', required="")
     .input-group.grid-12
         label(for='deadline') Deadline
-        input.date-input.localeAwareDate.new-placeholder.hasDatepicker(name='deadline', placeholder='MM/DD/YYYY', type='date', value='', required="")
+        input.date-input.localeAwareDate.new-placeholder.hasDatepicker(name='field_66149389[date]', placeholder='MM/DD/YYYY', type='date', value='', required="")
     .input-group.grid-12
         label(for='projectDescription') Project description
-        input(name='projectDescription', type='hidden', class='hidden-input-proj-desc', required="")
+        input(name='field_66149385', type='hidden', class='hidden-input-proj-desc', required="")
         div.editable.proj-desc
     .input-group.grid-12
         label(for='goals') Goals and metrics
-        input(name='goals', type='hidden', class='hidden-input-goals')
+        input(name='field_66149391', type='hidden', class='hidden-input-goals')
         div.editable.goals
     .input-group.grid-12
         label(for='file') Files
-        input(id='fileupload', name='files[]', type='file', data-url='/api/addfile', multiple='')
-        div#progress
-            div.bar(style='width: 0%;')
+        input(id='attachment_0', name='attachment_0', type='file')
+        input.hide(id='attachment_1', name='attachment_1', type='file')
+        input.hide(id='attachment_2', name='attachment_2', type='file')
+        input.hide(id='attachment_3', name='attachment_3', type='file')
+        input.hide(id='attachment_4', name='attachment_4', type='file')
+        input.hide(id='attachment_5', name='attachment_5', type='file')
+        input.hide(id='attachment_6', name='attachment_6', type='file')
+        input.hide(id='attachment_7', name='attachment_7', type='file')
+        input.hide(id='attachment_8', name='attachment_8', type='file')
+        div.grid-12
+            a.add-another-file Add another
 
     .input-group.grid-12
-        input.primary.button(type='submit', value='Submit')
+        button.primary.button(type='submit', value='Submit') Submit
+
+div.thankyou.hide
+    p Your request has been submitted. Please refresh the page to update the view.
+    button.cta.button.refresh Refresh Page

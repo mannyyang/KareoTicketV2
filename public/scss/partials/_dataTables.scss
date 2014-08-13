@@ -45,8 +45,13 @@ $completed-color: $success-color;
             }
         }
 
-        tr {
+        tbody tr.item {
             height: 75px;
+
+            &:hover td{
+                background: #f4f7fb;
+                cursor: pointer;
+            }
         }
 
         td {
@@ -99,7 +104,9 @@ $completed-color: $success-color;
         }
 
         td.title {
-
+            h3 {
+                margin: 0;
+            }
         }
 
         td.owner {
@@ -111,6 +118,7 @@ $completed-color: $success-color;
         }
 
         td.status {
+            width: 14.5%;
             font-weight: 500;
 
             .submitted {
@@ -124,6 +132,27 @@ $completed-color: $success-color;
             .inprogress {
                 color: $inprogress-color;
             }
+        }
+
+        td.info {
+            padding: 15px;
+
+            div.info-container {
+                padding-right: 25px;
+                padding-left: 25px;
+            }
+
+            ul {
+                float: left;
+                padding: 0;
+                margin: 0 0 1em 0;
+                list-style-type: none;
+            }
+
+            ul li {
+                margin-bottom: 15px;
+            }
+
         }
 
     }

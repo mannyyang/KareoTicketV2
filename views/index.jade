@@ -3,13 +3,17 @@ extends layout
 block header
 
 block nav
-	#nav.grid-3
+	#nav.grid-12
 		include partials/nav.jade
 
 block tables
-	#tables.grid-9
+	#tables.grid-12
 		include partials/tables.jade
 
 block lightboxes
 	#lightboxes
 		include partials/lightbox_add_project.jade
+
+block iframes
+	#iframes.hide
+		iframe(id="project_podio_comm_frame", name="podio_comm_frame", src="https://podio.com/webforms/8527312/642603/frame")

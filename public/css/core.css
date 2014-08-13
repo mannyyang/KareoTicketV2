@@ -6088,8 +6088,12 @@ i.ki.ellipsis {
   padding: 5px 10px;
   border-bottom-color: #ececee;
 }
-.dataTables_wrapper table.dataTable tr {
+.dataTables_wrapper table.dataTable tbody tr.item {
   height: 75px;
+}
+.dataTables_wrapper table.dataTable tbody tr.item:hover td {
+  background: #f4f7fb;
+  cursor: pointer;
 }
 .dataTables_wrapper table.dataTable td {
   padding: 5px 10px;
@@ -6129,6 +6133,9 @@ i.ki.ellipsis {
 .dataTables_wrapper table.dataTable td.priority .P3 {
   background-color: #ffd600;
 }
+.dataTables_wrapper table.dataTable td.title h3 {
+  margin: 0;
+}
 .dataTables_wrapper table.dataTable td.owner {
   width: 20%;
 }
@@ -6136,6 +6143,7 @@ i.ki.ellipsis {
   width: 12%;
 }
 .dataTables_wrapper table.dataTable td.status {
+  width: 14.5%;
   font-weight: 500;
 }
 .dataTables_wrapper table.dataTable td.status .submitted {
@@ -6146,6 +6154,22 @@ i.ki.ellipsis {
 }
 .dataTables_wrapper table.dataTable td.status .inprogress {
   color: #3371b6;
+}
+.dataTables_wrapper table.dataTable td.info {
+  padding: 15px;
+}
+.dataTables_wrapper table.dataTable td.info div.info-container {
+  padding-right: 25px;
+  padding-left: 25px;
+}
+.dataTables_wrapper table.dataTable td.info ul {
+  float: left;
+  padding: 0;
+  margin: 0 0 1em 0;
+  list-style-type: none;
+}
+.dataTables_wrapper table.dataTable td.info ul li {
+  margin-bottom: 15px;
 }
 .dataTables_wrapper .dataTables_paginate .paginate_button {
   background-color: #e5e6e !important;

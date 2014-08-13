@@ -1,7 +1,7 @@
 doctype 5
 html
 	head
-		title= title
+		title= "Kareo Web Requests"
 		link(rel='stylesheet', href='http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css')
 		link(rel='stylesheet', href='//cdn.datatables.net/1.10.0/css/jquery.dataTables.css')
 		link(rel='stylesheet', href='/css/medium-editor.min.css')
@@ -14,17 +14,16 @@ html
 				img(class="logo", src="/img/kareo_logo_white.png")
 				block header
 		.main-content
-			.container.full
+			.container
 				.grid-12.page-title
 					h1 Kareo Web Requests
 				.grid-12
 					block nav
 					block tables
 		block lightboxes
+		block iframes
 	script(src='//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
+	script(src='https://podio.com/webforms/8527312/642603.js')
 	script(src='//cdn.datatables.net/1.10.0/js/jquery.dataTables.js')
 	script(src='/js/plugins/medium-editor.min.js')
-	script(src='/js/plugins/jquery.ui.widget.js')
-	script(src='/js/plugins/jquery.iframe-transport.js')
-	script(src='/js/plugins/jquery.fileupload.js')
 	script(src='/js/main.js')

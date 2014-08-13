@@ -6,14 +6,17 @@ table.bordered.fancy.zebra.left(width="100%")
             td= "Project Owner"
             td= "Deadline"
             td= "Status"
+            td= ""
     tbody
         each val in allItems
-            tr
+            tr.no-info.item
                 - var priority = ""
                 - var title = ""
                 - var owner = ""
                 - var deadline = ""
                 - var status = ""
+                - var description = ""
+                - var milestones = []
 
                 each field in val.fields
                     if field.label == "Priority"
@@ -27,19 +30,23 @@ table.bordered.fancy.zebra.left(width="100%")
                         - deadline = field.values[0].start_date
                     if field.label == "Status"
                         - status = field.values[0].value.text
+                    if field.label == "Project description"
+                        - description = field.values[0].value
+                    if field.label == "Milestones"
+                        - milestones = field.values
 
-                td(class="priority")
+                td.priority
                     if status == "Ongoing"
-                        div(class="notapplicable")
+                        div.notapplicable
                     else
-                        div(class=priority)= priority
-                td(class="title")
-                    span: b= title
-                td(class="owner")
+                        div(class= priority)= priority
+                td.title
+                    h3: b= title
+                td.owner
                     div= owner.substring(1, owner.length)
-                td(class="deadline")
+                td.deadline
                     div= moment(deadline, 'YYYY-MM-DD').endOf('day').fromNow()
-                td(class="status")
+                td.status
                     span(class="text-has-icon #{status.replace(/ /g,'').toLowerCase()}")= status
                         if status == "Ongoing"
                             i.ki.history
@@ -49,3 +56,12 @@ table.bordered.fancy.zebra.left(width="100%")
                             i.ki.play
                         if status == "Complete"
                             i.ki.check
+                        if status == "Archived"
+                            i.ki.folder
+                td.hide.expand
+                    span +
+                    div.hide.more-info
+                        p= description
+                        ul
+                            each milestone in milestones
+                                li: div.status-box= milestone.value.title
