@@ -12,7 +12,8 @@
     exports.index = function(req, res){
     	res.render('index', {
                 allItems: podio.getItems(),
-                moment: moment
+                moment: moment,
+                podio: podio
             });
     };
 

@@ -6,7 +6,7 @@ table.bordered.fancy.zebra.left(width="100%")
             td= "Project Owner"
             td= "Deadline"
             td= "Status"
-            td= ""
+            td.hide= ""
     tbody
         each val in allItems
             tr.no-info.item
@@ -64,4 +64,5 @@ table.bordered.fancy.zebra.left(width="100%")
                         p= description
                         ul
                             each milestone in milestones
-                                li: div.status-box= milestone.value.title
+                                li
+                                    div.status-box= milestone.value.title

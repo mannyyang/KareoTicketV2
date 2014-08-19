@@ -101,7 +101,6 @@
                         console.log(error);
                     }
                 });
-                alert("it's loaded");
             });
         });
 
