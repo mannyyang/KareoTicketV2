@@ -41,7 +41,7 @@
 			var cusOptions = podioClassGlobal.options;
 				cusOptions.view_id = '8128188';
 
-			podioClassGlobal.podioAPI.itemsFilterItemsByView(podioClassGlobal.options, function (err, result) {
+			podioClassGlobal.podioAPI.itemsFilterItemsByView(cusOptions, function (err, result) {
 				if (err)
 					return console.error(err);
 
@@ -50,7 +50,7 @@
 				return result.body.items;
 			});
 		},
-		addMilestones: function(project){
+		addMilestones: function(project, index, arrayLength){
 
 			var currProject = project;
 			currProject.milestones = [];
@@ -83,13 +83,19 @@
 					console.log('A milestone has failed to process.');
 				} else {
 					podioClassGlobal.currentProjects.push(currProject);
-					console.log('All milestones have been processed successfully');
+					console.log('All milestones for project ' + currProject.title + ' have been processed successfully');
+
+					if (index === arrayLength - 1){
+						debugger;
+						console.log('callback for all milestones added');
+					}
+					
 				}
 			});
 
 		},
-		getItems: function(){
-			return podioClassGlobal.allProjects;
+		getCurrentItems: function(){
+			return podioClassGlobal.currentProjects;
 		},
 	});
 
@@ -101,23 +107,13 @@
 	});
 
 	Podio.on('currentProjects', function(currentProjects){
-
-		for (var i = 0; i < currentProjects.length; i++){
-			Podio.addMilestones(currentProjects[i]);
-		}
-
+		currentProjects.forEach(function(project, index, array){
+			Podio.addMilestones(project, index, array.length);
+		});
 	});
 
-	exports.getItem = function(itemID){
-		return Podio.getItem(itemID);
-	};
-
-	exports.getItems = function(req, res){
-		return Podio.getItems();
-	};
-
-	exports.getAllItems = function(req, res){
-		return Podio.getAllItems();
+	exports.getCurrentItems = function(req, res){
+		return Podio.getCurrentItems();
 	};
 
 })();

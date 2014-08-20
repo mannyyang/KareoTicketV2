@@ -8,7 +8,7 @@ table.bordered.fancy.zebra.left(width="100%")
             td= "Status"
             td.hide= ""
     tbody
-        each val in allItems
+        each val in currItems
             tr.no-info.item
                 - var priority = ""
                 - var title = ""
@@ -16,7 +16,6 @@ table.bordered.fancy.zebra.left(width="100%")
                 - var deadline = ""
                 - var status = ""
                 - var description = ""
-                - var milestones = []
 
                 each field in val.fields
                     if field.label == "Priority"
@@ -32,8 +31,6 @@ table.bordered.fancy.zebra.left(width="100%")
                         - status = field.values[0].value.text
                     if field.label == "Project description"
                         - description = field.values[0].value
-                    if field.label == "Milestones"
-                        - milestones = field.values
 
                 td.priority
                     if status == "Ongoing"
@@ -63,6 +60,15 @@ table.bordered.fancy.zebra.left(width="100%")
                     div.hide.more-info
                         p= description
                         ul
-                            each milestone in milestones
+                            each milestone in val.milestones
+                                - var msStatus = ""
+
+                                each field in milestone.fields
+                                    if field.label == "Status"
+                                        - msStatus = field.values[0].value.text
+
                                 li
-                                    div.status-box= milestone.value.title
+                                    div.status-box
+                                        = milestone.title
+                                        = msStatus
+

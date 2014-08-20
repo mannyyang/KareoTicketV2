@@ -67,13 +67,7 @@
 
         // initialize data tables.
         $('table').DataTable({
-            // "columnDefs": [
-            //     {
-            //         "targets": [ 5 ],
-            //         "visible": false,
-            //         "searchable": false
-            //     },
-            // ]
+
         });
 
         // add text boxes with editable styles
