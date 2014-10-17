@@ -1,0 +1,473 @@
+/*************************************************
+	Icons
+**************************************************/
+
+@font-face {
+	font-family: 'Pictos Custom';
+	src: url(../../fonts/pictos_custom.eot);
+	src: url(../../fonts/pictos_custom.woff) format('woff'),
+		 url(../../fonts/pictos_custom.ttf) format('truetype'),
+		 url(../../fonts/pictos_custom.svg) format('svg');
+};
+
+i:before {
+	@include font-smoothing;
+	font-size:$base-font-size * 1.5;
+	font-style: normal;
+	line-height: 0;
+	font-family: "Pictos Custom";
+	font-weight: 400;
+}
+
+i.expand:before {
+	content:"£";
+}
+
+i.contract:before {
+	content:"¢";
+}
+
+i.check:before {
+	content:"C";
+}
+
+i.error:before {
+	content:"E";
+}
+
+i.print:before {
+	content:"7";
+}
+
+i.email:before {
+	content:"6";
+}
+
+i.fax:before {
+	content:"#";
+}
+
+i.attention:before {
+	content:"W";
+}
+
+i.love:before {
+	content:"L";
+	color:pink;
+}
+
+i.plus:before {
+	content:"+";
+}
+
+i.menu:before {
+	content:"M";
+}
+
+i.refer:before {
+	content:">";
+}
+
+i.search:before {
+	content:"S";
+}
+
+i.gear:before {
+	content:"s";
+}
+
+i.recents:before {
+	content:"H";
+}
+
+i.image:before {
+	content:"I";
+}
+
+i.redo:before {
+	content:"R";
+}
+
+i.working:before {
+	content:"R";
+}
+
+i.schedule:before {
+	content:"V";
+}
+
+i.move:before {
+	content:"T";
+}
+
+i.question:before {
+	content:"?";
+}
+
+i.graph:before {
+	content:"G";
+}
+
+i.directinbox:before {
+	content:"u";
+}
+
+i.document:before {
+	content:"Y";
+}
+
+i.download:before {
+	content:"d";
+}
+
+i.credit-card:before {
+	content:"P";
+}
+
+i.dashboard:before {
+	content:"D";
+}
+
+i.calendar:before {
+	content:"A";
+}
+
+i.people:before {
+	content:"U";
+}
+
+i.home:before {
+	content:"B";
+}
+
+i.tools:before {
+	content:"F";
+}
+i.feedback:before {
+	content:"f";
+}
+
+i.user:before {
+	content:"1";
+}
+
+i.insurance:before {
+	content:"3";
+}
+
+i.phone:before {
+	content:"4";
+}
+
+i.pen:before {
+	content:"2";
+}
+
+i.money:before {
+	content:"5";
+}
+
+i.close:before {
+	content:"X";
+}
+
+i.trash:before {
+	content:"-";
+	line-height: 1;
+}
+
+i.chevron-right:before {
+	content:"b";
+}
+
+i.upload:before {
+	content:"|"; //Pipe
+}
+
+i.message:before {
+	content:"c";
+}
+
+i.flag:before {
+	content:"¶";
+}
+
+i.popout:before {
+	content:"N";
+}
+
+/*****************************************
+	Kareo Icons. Prefixed with ki. e.g., .ki-user
+*******************************************/
+
+@font-face {
+	font-family: 'KareoIcons';
+	src: url(../../fonts/KareoIcons.eot);
+	src: url(../../fonts/KareoIcons.woff) format('woff'),
+		 url(../../fonts/KareoIcons.ttf) format('truetype'),
+		 url(../../fonts/KareoIcons.svg) format('svg');
+};
+
+i.ki:before {
+	@include font-smoothing;
+	font-size:$base-font-size * 1.5;
+	font-style: normal;
+	line-height: 0;
+	font-family:"KareoIcons";
+	font-weight: 400;
+}
+
+i.ki.mini:before {
+	font-size: 1em;
+}
+
+i.ki.mu:before {
+	font-size:1.1em;
+	content: "U";
+}
+
+i.ki.caret:before {
+	font-size:1.1em;
+	content: "^";
+}
+
+i.ki.user-alt:before {
+	content: "=";
+}
+
+i.ki.crossed-eye:before {
+	content: "/";
+}
+
+i.ki.inoffice:before {
+	content: "+";
+}
+
+i.ki.education:before {
+	content: "3";
+}
+
+i.ki.imaging:before {
+	content: "0";
+}
+
+i.ki.edu:before {
+	content: "Q";
+}
+
+i.ki.labs:before {
+	content: "z";
+}
+
+i.ki.importexport:before {
+	content: "Z";
+}
+
+i.ki.rx:before {
+	content: "q";
+}
+
+i.ki.notes:before {
+	content: "5";
+}
+
+i.ki.smnote:before {
+	content: "g";
+}
+
+i.ki.user:before {
+	content:"T";
+}
+
+i.ki.dashboard:before {
+	content:"D";
+}
+
+i.ki.history:before {
+	content:"H";
+}
+
+i.ki.doc-history:before {
+	content:"h";
+}
+
+i.ki.close:before {
+	content:"x";
+}
+
+i.ki.close-alt:before {
+	content:"X";
+}
+
+i.ki.attention:before {
+	content:"W";
+}
+
+i.ki.attention-alt:before {
+	content:"w";
+}
+
+i.ki.vitals:before {
+	content:"G";
+}
+
+i.ki.search:before {
+	content:"S";
+}
+
+i.ki.search-alt:before {
+	content:"a";
+}
+
+
+i.ki.question:before {
+	content:"O";
+}
+
+i.ki.question-alt:before {
+	content:"o";
+}
+
+i.ki.plus:before {
+	content:"p";
+}
+
+i.ki.plus-alt:before {
+	content:"P";
+}
+
+i.ki.play:before {
+	content:"n";
+}
+
+i.ki.play-alt:before {
+	content:"N";
+}
+
+i.ki.info:before {
+	content:"I";
+}
+
+i.ki.info-alt:before {
+	content:"i";
+}
+
+i.ki.heart:before {
+	content:"l";
+}
+
+i.ki.heart-alt:before {
+	content:"L";
+}
+
+i.ki.folder:before {
+	content:"Y";
+}
+
+i.ki.eye:before {
+	content:"e";
+}
+
+i.ki.money:before {
+	content:"9";
+}
+
+i.ki.money-alt:before {
+	content:"8";
+}
+
+i.ki.error:before {
+	content:"f";
+}
+
+i.ki.error-alt:before {
+	content:"F";
+}
+
+i.ki.check:before {
+	content:"C";
+}
+
+i.ki.check-alt:before {
+	content:"c";
+}
+
+i.ki.creditcard:before {
+	content:"m";
+}
+
+i.ki.calendar:before {
+	content:"A";
+}
+
+i.ki.goback:before {
+	content:"j";
+}
+
+i.ki.goback-alt:before {
+	content:"J";
+}
+
+i.ki.trash:before {
+	content:"t";
+}
+
+i.ki.gear:before {
+	content:"s";
+}
+
+i.ki.print:before {
+	content:"7";
+}
+
+i.ki.phone:before {
+	content:"4";
+}
+
+i.ki.menu:before {
+	content:"M";
+}
+
+i.ki.mail:before {
+	content:"6";
+}
+
+i.ki.home:before {
+	content:"B";
+}
+
+i.ki.edit:before {
+	content:"2";
+}
+
+i.ki.document:before {
+	content:"d";
+}
+
+i.ki.reschedule:before {
+	content:"R";
+}
+
+i.ki.inoffice-alt:before {
+	content:"V";
+}
+
+i.ki.next:before {
+	content:".";
+}
+
+i.ki.prev:before {
+	content:";";
+}
+
+i.ki.practice-settings {
+	content:"b";
+}
+
+i.ki.patient-settings {
+	content:"!";
+}
+
+i.ki.ellipsis {
+	content:"…";
+}

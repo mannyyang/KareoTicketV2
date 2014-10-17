@@ -40,11 +40,11 @@ table.bordered.fancy.zebra.left(width="100%")
                 td.title
                     h3: b= title
                 td.owner
-                    div= owner.substring(1, owner.length)
+                    p.base-text= owner.substring(1, owner.length)
                 td.deadline
-                    div= moment(deadline, 'YYYY-MM-DD').endOf('day').fromNow()
+                    p.base-text= moment(deadline, 'YYYY-MM-DD').endOf('day').fromNow()
                 td.status
-                    span(class="text-has-icon #{status.replace(/ /g,'').toLowerCase()}")= status
+                    span(class="text-has-icon #{status.replace(/ /g,'').toLowerCase()} base-text")= status
                         if status == "Ongoing"
                             i.ki.history
                         if status == "Submitted"
@@ -68,7 +68,19 @@ table.bordered.fancy.zebra.left(width="100%")
                                         - msStatus = field.values[0].value.text
 
                                 li
-                                    div.status-box
-                                        = milestone.title
-                                        = msStatus
-
+                                    if msStatus == "Complete"
+                                        div.grid-2
+                                            p.small-text.status-text.aligncenter
+                                                b="Status:"
+                                                br
+                                                span.success-text="Complete"
+                                        div.grid-10
+                                            div(class="status-box success")= milestone.title
+                                    else
+                                        div.grid-2
+                                            p.small-text.status-text.aligncenter
+                                                b="Status:"
+                                                br
+                                                span.error-text="Entered"
+                                        div.grid-10
+                                            div(class="status-box urgent")=milestone.title

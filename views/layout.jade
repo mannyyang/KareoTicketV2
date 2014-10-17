@@ -4,14 +4,13 @@ html
 		title= "Kareo Web Requests"
 		link(rel='stylesheet', href='http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css')
 		link(rel='stylesheet', href='//cdn.datatables.net/1.10.0/css/jquery.dataTables.css')
-		link(rel='stylesheet', href='/css/medium-editor.min.css')
-		link(rel='stylesheet', href='/css/default.min.css')
-		link(rel='stylesheet', href='/css/core.css')
-		script(src='http://localhost:35729/livereload.js')
+		link(rel='stylesheet', href='/vendors/medium-editor/css/medium-editor.min.css')
+		link(rel='stylesheet', href='/vendors/medium-editor/css/default.min.css')
+		link(rel='stylesheet', href='/resources/css/core.css')
 	body.ice
 		header.main-header
 			.container
-				img(class="logo", src="/img/kareo_logo_white.png")
+				img(class="logo", src="/resources/img/kareo_logo_white.png")
 				block header
 		.main-content
 			.container
@@ -25,5 +24,5 @@ html
 	script(src='//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
 	script(src='https://podio.com/webforms/8527312/642603.js')
 	script(src='//cdn.datatables.net/1.10.0/js/jquery.dataTables.js')
-	script(src='/js/plugins/medium-editor.min.js')
-	script(src='/js/main.js')
+	script(src='/vendors/medium-editor/js/medium-editor.min.js')
+	script(src='/resources/js/main.js')

@@ -1,7 +1,7 @@
 var config = {};
 
 //General Configurations
-config.webPort = process.env.PORT || 3000;
+config.webPort = process.env.PORT || 3030;
 
 // Podio Credentials
 config.podio = {

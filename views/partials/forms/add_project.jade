@@ -1,4 +1,4 @@
-form#podio-project-form(accept-charset='UTF-8', method='post', enctype='multipart/form-data', action='https://podio.com/webforms/8527312/642603', target='podio_comm_frame')
+form#podio-project-form(accept-charset='UTF-8', method='post', enctype='multipart/form-data', action='https://podio.com/webforms/8527312/642603', target='podio_comm_frame', novalidate="")
     input(type='hidden', name='field_66149388', value='2')
     .input-group.grid-12
         label(for='projectTitle') Project name
@@ -23,11 +23,11 @@ form#podio-project-form(accept-charset='UTF-8', method='post', enctype='multipar
         input.date-input.localeAwareDate.new-placeholder.hasDatepicker(name='field_66149389[date]', placeholder='MM/DD/YYYY', type='date', value='', required="")
     .input-group.grid-12
         label(for='projectDescription') Project description
-        input(name='field_66149385', type='hidden', class='hidden-input-proj-desc', required="")
+        textarea(name='field_66149385', type='hidden', class='hidden-input-proj-desc hide', required="")
         div.editable.proj-desc
     .input-group.grid-12
         label(for='goals') Goals and metrics
-        input(name='field_66149391', type='hidden', class='hidden-input-goals')
+        textarea(name='field_66149391', type='hidden', class='hidden-input-goals hide')
         div.editable.goals
     .input-group.grid-12
         label(for='file') Files

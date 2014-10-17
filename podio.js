@@ -1,4 +1,4 @@
-(function(){
+(function () {
 
 	"use strict";
 
@@ -38,16 +38,18 @@
 
 		},
 		getCurrentProjects: function(){
+			podioClassGlobal.currentProjects = [];
+
 			var cusOptions = podioClassGlobal.options;
 				cusOptions.view_id = '8128188';
 
 			podioClassGlobal.podioAPI.itemsFilterItemsByView(cusOptions, function (err, result) {
-				if (err)
-					return console.error(err);
+				if (err) {
+                    return console.error(err);
+                }
 
 				console.log('grabbed all items');
 				podioClassGlobal.emit('currentProjects', result.body.items);
-				return result.body.items;
 			});
 		},
 		addMilestones: function(project, index, arrayLength){
@@ -86,17 +88,16 @@
 					console.log('All milestones for project ' + currProject.title + ' have been processed successfully');
 
 					if (index === arrayLength - 1){
-						debugger;
-						console.log('callback for all milestones added');
+						podioClassGlobal.emit('milestones');
 					}
-					
+
 				}
 			});
 
 		},
-		getCurrentItems: function(){
+		getProcessedProjects: function(){
 			return podioClassGlobal.currentProjects;
-		},
+		}
 	});
 
 	var Podio = new podio(PodioAPI, config.podio.username, config.podio.password);
@@ -112,8 +113,17 @@
 		});
 	});
 
-	exports.getCurrentItems = function(req, res){
-		return Podio.getCurrentItems();
+	exports.updateProcessedProjects = function(callback){
+		Podio.getCurrentProjects();
+		Podio.on('milestones', function(){
+			console.log('got all milestones');
+			callback(null, 'success');
+		});
+	};
+
+	exports.getProcessedProjects = function(req, res){
+
+		return Podio.getProcessedProjects();
 	};
 
 })();
