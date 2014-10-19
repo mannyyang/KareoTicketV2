@@ -34,7 +34,6 @@
     });
 
     app.get('/', routes.index);
-    app.get('/update', routes.update);
 
     // Start Express Server
     http.createServer(app).listen(app.get('port'), function(){
